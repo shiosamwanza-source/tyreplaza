@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Picha za Duka – Tyre Plaza Mwanza</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<style>
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:6px;border-radius:10px;overflow:hidden}
+.gallery-item{overflow:hidden;position:relative;aspect-ratio:4/3;cursor:zoom-in;background:var(--navy2)}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gallery-item:hover img{transform:scale(1.07)}
+.gallery-item .g-overlay{position:absolute;inset:0;background:linear-gradient(transparent 50%,rgba(0,0,0,.8));opacity:0;transition:opacity .3s}
+.gallery-item:hover .g-overlay{opacity:1}
+.gallery-item .g-cap{position:absolute;bottom:0;left:0;right:0;padding:1rem .9rem .7rem;color:var(--white);font-size:.78rem;font-weight:700;letter-spacing:.07em;transform:translateY(10px);opacity:0;transition:all .3s}
+.gallery-item:hover .g-cap{transform:translateY(0);opacity:1}
+.gallery-item.large{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+.gallery-item.large img{height:100%;min-height:300px}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="nav-brand"><div class="nav-brand-name"><span>TYRE</span> PLAZA</div><div class="nav-brand-sub">Mwanza · Tanzania</div></div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Nyumbani</a></li><li><a href="catalog.html">Bidhaa</a></li>
+    <li><a href="gallery.html">Picha</a></li><li><a href="about.html">Kuhusu</a></li>
+    <li><a href="../blog/index.html">Blog</a></li><li><a href="contact.html">Wasiliana</a></li>
+    <li><a href="../admin/index.html" class="nav-cta">⚙ Admin</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="../index.html">Nyumbani</a><span class="breadcrumb-sep">›</span><span>Gallery ya Picha</span></div>
+  <h1 class="page-hero-title">Gallery ya <span class="accent">Duka Letu</span></h1>
+  <p class="page-hero-desc">Picha za kweli za duka letu, bidhaa zetu, na stock yetu kubwa ya tairi, betri na rims – Pamba Road, Mwanza.</p>
+</div>
+
+<section class="section section-dark">
+  <!-- Filter -->
+  <div class="tag-filter">
+    <button class="tag-btn active" data-cat="all">🖼️ Zote</button>
+    <button class="tag-btn" data-cat="shop">🏪 Duka</button>
+    <button class="tag-btn" data-cat="tyres">🛞 Tairi</button>
+    <button class="tag-btn" data-cat="batteries">⚡ Betri</button>
+    <button class="tag-btn" data-cat="stock">📦 Stock</button>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item large fade-up" data-filter="shop">
+      <img src="../shop-front.jpg" alt="Tyre Plaza duka Mwanza" data-lb data-src="../shop-front.jpg" data-cap="Tyre Plaza – Pamba Road, Mwanza. Duka letu kuu.">
+      <div class="g-overlay"></div><div class="g-cap">📍 Duka Kuu – Pamba Road, Mwanza</div>
+    </div>
+    <div class="gallery-item fade-up" data-filter="tyres">
+      <img src="../tyres-stack.jpg" alt="Tairi za malori" data-lb data-src="../tyres-stack.jpg" data-cap="Tairi za malori – sizes mbalimbali stokini">
+      <div class="g-overlay"></div><div class="g-cap">🚛 Tairi za Malori – Stock Kubwa</div>
+    </div>
+    <div class="gallery-item fade-up" data-filter="batteries">
+      <img src="../batteries-stock.jpg" alt="Betri za gari" data-lb data-src="../batteries-stock.jpg" data-cap="Stock ya betri – Omeron na brand nyingine">
+      <div class="g-overlay"></div><div class="g-cap">⚡ Stock ya Betri za Gari</div>
+    </div>
+    <div class="gallery-item fade-up" data-filter="tyres">
+      <img src="../blackhawk-tyres.jpg" alt="Blackhawk tyres" data-lb data-src="../blackhawk-tyres.jpg" data-cap="Blackhawk HS918 – Tairi za malori nzito">
+      <div class="g-overlay"></div><div class="g-cap">⚫ Blackhawk HS918 – Heavy Duty</div>
+    </div>
+    <div class="gallery-item fade-up" data-filter="shop">
+      <img src="../shop-front2.jpg" alt="Tyre Plaza shop" data-lb data-src="../shop-front2.jpg" data-cap="Mtazamo mwingine wa duka letu – stock nje">
+      <div class="g-overlay"></div><div class="g-cap">🏪 Duka Letu – Stock Nje</div>
+    </div>
+    <div class="gallery-item fade-up" data-filter="stock">
+      <img src="../tyres-outdoor.jpg" alt="Tairi nje" data-lb data-src="../tyres-outdoor.jpg" data-cap="Royalblack na Dynablack – display ya nje">
+      <div class="g-overlay"></div><div class="g-cap">🩷 Royalblack · Dynablack – Stock</div>
+    </div>
+    <div class="gallery-item fade-up" data-filter="stock">
+      <img src="../tyres-display.jpg" alt="Tairi display" data-lb data-src="../tyres-display.jpg" data-cap="Display ya tairi – aina mbalimbali">
+      <div class="g-overlay"></div><div class="g-cap">📦 Display ya Tairi Mbalimbali</div>
+    </div>
+    <div class="gallery-item fade-up" data-filter="tyres">
+      <img src="../tyres-stack.jpg" alt="Tairi kubwa" data-lb data-src="../tyres-stack.jpg" data-cap="Tairi za truck na bus – Mwanza">
+      <div class="g-overlay"></div><div class="g-cap">🚌 Tairi za Mabasi na Malori</div>
+    </div>
+    <div class="gallery-item fade-up" data-filter="batteries">
+      <img src="../batteries-stock.jpg" alt="Betri storage" data-lb data-src="../batteries-stock.jpg" data-cap="Ghala la betri – stock kubwa ya betri mbalimbali">
+      <div class="g-overlay"></div><div class="g-cap">🔋 Ghala la Betri – Stock Kubwa</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="text-align:center;margin-top:3rem;padding:2.5rem;background:var(--navy2);border-radius:10px;border:1px solid var(--border)">
+    <h3 style="font-family:'Montserrat',sans-serif;font-size:1.5rem;text-transform:uppercase;color:var(--white);margin-bottom:.7rem">Unataka <span style="color:var(--red2)">Kujua Bei?</span></h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.5rem">Tuma ujumbe WhatsApp na tutakujibu haraka kuhusu tairi, betri au rims unazohitaji.</p>
+    <a href="https://wa.me/255767638987" target="_blank" class="btn btn-gold btn-lg">💬 WhatsApp: 0767 638 987</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Tyre Plaza Ltd · <a href="../index.html" style="color:var(--muted)">Nyumbani</a></div>
+    <div class="footer-powered">Powered by <a href="#">TEUS Technology</a></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/255767638987" class="wa-float" target="_blank">💬</a>
+<div id="lightbox"><button class="lb-close">✕</button><img class="lb-img" src="" alt=""/><div class="lb-caption"></div></div>
+<script src="../js/main.js"></script>
+</body>
+</html>
