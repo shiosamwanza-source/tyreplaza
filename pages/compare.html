@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Linganisha Bidhaa – Tyre Plaza</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<style>
+.compare-table{width:100%;border-collapse:collapse}
+.compare-table th{background:rgba(192,24,26,.1);color:var(--gold);font-family:'Montserrat',sans-serif;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;padding:1rem;border:1px solid var(--border);text-align:left}
+.compare-table td{padding:.9rem 1rem;border:1px solid var(--border);font-size:.86rem;color:var(--dim);vertical-align:top}
+.compare-table tr:hover td{background:rgba(255,255,255,.02)}
+.compare-table .prod-head{background:var(--navy2);font-family:'Montserrat',sans-serif;font-weight:800;color:var(--white);font-size:1rem;text-align:center;padding:1.5rem}
+.compare-table .label-col{color:var(--gold);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;background:rgba(255,255,255,.02);width:160px}
+.winner{color:var(--green);font-weight:700}
+.compare-add{background:rgba(255,255,255,.03);border:2px dashed rgba(255,255,255,.1);border-radius:10px;height:160px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem;cursor:pointer;transition:all .2s}
+.compare-add:hover{border-color:var(--red);background:rgba(192,24,26,.05)}
+.compare-add-icon{font-size:2.5rem;opacity:.4}
+.compare-add-text{font-size:.8rem;color:var(--muted)}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="nav-brand"><div class="nav-brand-name"><span>TYRE</span> PLAZA</div><div class="nav-brand-sub">Mwanza · Tanzania</div></div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Nyumbani</a></li><li><a href="catalog.html">Bidhaa</a></li>
+    <li><a href="gallery.html">Picha</a></li><li><a href="about.html">Kuhusu</a></li>
+    <li><a href="../blog/index.html">Blog</a></li><li><a href="contact.html">Wasiliana</a></li>
+    <li><a href="../admin/index.html" class="nav-cta">⚙ Admin</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="../index.html">Nyumbani</a><span class="breadcrumb-sep">›</span><a href="catalog.html">Bidhaa</a><span class="breadcrumb-sep">›</span><span>Linganisha</span></div>
+  <h1 class="page-hero-title">Linganisha <span class="accent">Bidhaa</span></h1>
+  <p class="page-hero-desc">Linganisha tairi mbili au tatu moja kwa moja – brand, warranty, sizes na matumizi – ili ufanye uamuzi sahihi.</p>
+</div>
+
+<section class="section section-dark">
+
+  <!-- Quick Selector -->
+  <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:1.8rem;margin-bottom:2.5rem" class="fade-up">
+    <h3 style="font-family:'Montserrat',sans-serif;font-size:.9rem;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem">⚖️ Chagua Bidhaa za Kulinganisha</h3>
+    <div class="grid-3">
+      <div class="form-group">
+        <label class="form-label">Bidhaa ya 1</label>
+        <select class="form-control" id="sel1" onchange="buildCompare()">
+          <option value="">-- Chagua --</option>
+          <option value="bk">Blackhawk HS918 Drive</option>
+          <option value="db">Dunlop SP Sport Maxx</option>
+          <option value="gy">Goodyear Excellence</option>
+          <option value="bf">BF Goodrich All-Terrain KO2</option>
+          <option value="gt">GT Radial Savero A/T</option>
+          <option value="rb">Royalblack Truck Series</option>
+          <option value="dynb">Dynablack Heavy Duty</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Bidhaa ya 2</label>
+        <select class="form-control" id="sel2" onchange="buildCompare()">
+          <option value="">-- Chagua --</option>
+          <option value="bk">Blackhawk HS918 Drive</option>
+          <option value="db">Dunlop SP Sport Maxx</option>
+          <option value="gy">Goodyear Excellence</option>
+          <option value="bf">BF Goodrich All-Terrain KO2</option>
+          <option value="gt">GT Radial Savero A/T</option>
+          <option value="rb">Royalblack Truck Series</option>
+          <option value="dynb">Dynablack Heavy Duty</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Bidhaa ya 3 (hiari)</label>
+        <select class="form-control" id="sel3" onchange="buildCompare()">
+          <option value="">-- Hiari --</option>
+          <option value="bk">Blackhawk HS918 Drive</option>
+          <option value="db">Dunlop SP Sport Maxx</option>
+          <option value="gy">Goodyear Excellence</option>
+          <option value="bf">BF Goodrich All-Terrain KO2</option>
+          <option value="gt">GT Radial Savero A/T</option>
+          <option value="rb">Royalblack Truck Series</option>
+          <option value="dynb">Dynablack Heavy Duty</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Compare Table -->
+  <div id="compare-output" class="fade-up">
+    <div style="text-align:center;padding:3rem;background:var(--navy2);border:2px dashed var(--border);border-radius:10px;color:var(--muted)">
+      <div style="font-size:3rem;margin-bottom:.8rem">⚖️</div>
+      <p style="font-size:.9rem">Chagua bidhaa 2 au zaidi hapo juu ili uone ulinganisho.</p>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="margin-top:3rem;text-align:center">
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:1rem">Bado una maswali? Wasiliana nasi kwa WhatsApp – tutakusaidia kuchagua bidhaa sahihi.</p>
+    <a href="https://wa.me/255767638987?text=Habari!%20Nahitaji%20msaada%20kuchagua%20kati%20ya%20tairi%20mbili." target="_blank" class="btn btn-gold btn-lg">💬 Omba Ushauri – WhatsApp</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Tyre Plaza Ltd</div>
+    <div class="footer-powered">Powered by <a href="#">TEUS Technology</a></div>
+  </div>
+</footer>
+<a href="https://wa.me/255767638987" class="wa-float" target="_blank">💬</a>
+<script src="../js/main.js"></script>
+<script>
+const products={
+  bk:{name:'Blackhawk HS918 Drive',brand:'Blackhawk',type:'Truck / Malori',sizes:'315/80R22.5, 295/80R22.5, 275/80R22.5',warranty:'12 Miezi',origin:'China',use:'Malori nzito, Trailers, Long distance',avail:'✅ Stokini',rating:'⭐⭐⭐⭐',best:'Bei nzuri kwa trucks'},
+  db:{name:'Dunlop SP Sport Maxx',brand:'Dunlop',type:'Passenger / Magari',sizes:'185/65R15, 195/65R15, 205/55R16, 225/45R17',warranty:'24 Miezi',origin:'Japan/UK',use:'Magari ya binafsi, Urban driving',avail:'✅ Stokini',rating:'⭐⭐⭐⭐⭐',best:'Premium quality'},
+  gy:{name:'Goodyear Excellence',brand:'Goodyear',type:'Passenger / Magari',sizes:'195/65R15, 205/55R16, 215/60R16',warranty:'24 Miezi',origin:'USA Brand',use:'Magari ya binafsi, Highways',avail:'⚠️ Chache',rating:'⭐⭐⭐⭐⭐',best:'USA brand, high performance'},
+  bf:{name:'BF Goodrich All-Terrain KO2',brand:'BF Goodrich',type:'SUV / 4x4 / All-Terrain',sizes:'265/65R17, 285/60R18, 255/70R16',warranty:'24 Miezi',origin:'USA Brand',use:'SUV, 4x4, Off-road, Savanna',avail:'⚠️ Chache',rating:'⭐⭐⭐⭐⭐',best:'Best kwa off-road Tanzania'},
+  gt:{name:'GT Radial Savero A/T',brand:'GT Radial',type:'Light Truck / Pickup',sizes:'7.50R16, 7.00R16, LT265/75R16',warranty:'12 Miezi',origin:'Indonesia',use:'Light trucks, Pickups, Vans',avail:'✅ Stokini',rating:'⭐⭐⭐⭐',best:'Bei nzuri kwa pickups'},
+  rb:{name:'Royalblack Truck Series',brand:'Royalblack',type:'Truck / Malori',sizes:'315/80R22.5, 11.00R20, 10.00R20',warranty:'12 Miezi',origin:'China',use:'Malori, Mabasi, Bus',avail:'✅ Stokini',rating:'⭐⭐⭐',best:'Bei ya chini zaidi'},
+  dynb:{name:'Dynablack Heavy Duty',brand:'Dynablack',type:'Heavy Truck / Malori',sizes:'11.00R20, 10.00R20, 9.00R20, 8.25R20',warranty:'12 Miezi',origin:'China',use:'Malori nzito, Buses, Mining',avail:'✅ Stokini',rating:'⭐⭐⭐⭐',best:'Kwa mazingira magumu'}
+};
+
+function buildCompare(){
+  const s1=document.getElementById('sel1').value;
+  const s2=document.getElementById('sel2').value;
+  const s3=document.getElementById('sel3').value;
+  if(!s1||!s2){document.getElementById('compare-output').innerHTML=`<div style="text-align:center;padding:3rem;background:var(--navy2);border:2px dashed var(--border);border-radius:10px;color:var(--muted)"><div style="font-size:3rem;margin-bottom:.8rem">⚖️</div><p>Chagua bidhaa 2 au zaidi.</p></div>`;return}
+  const items=[products[s1],products[s2]];
+  if(s3&&products[s3]) items.push(products[s3]);
+  const cols=items.length;
+  const rows=[
+    ['Brand','brand'],['Aina ya Bidhaa','type'],['Sizes Zinazopatikana','sizes'],
+    ['Warranty','warranty'],['Nchi ya Kuzalishwa','origin'],['Matumizi Bora','use'],
+    ['Upatikanaji','avail'],['Rating','rating'],['Faida Kubwa','best']
+  ];
+  let html=`<div style="overflow-x:auto"><table class="compare-table">
+    <thead><tr><th class="label-col">Kipengele</th>${items.map(p=>`<th class="prod-head">${p.name}<br><span style="font-size:.72rem;color:var(--muted);font-weight:400">${p.brand}</span></th>`).join('')}</tr></thead>
+    <tbody>
+    ${rows.map(([label,key])=>`<tr><td class="label-col">${label}</td>${items.map(p=>`<td>${p[key]||'—'}</td>`).join('')}</tr>`).join('')}
+    <tr><td class="label-col">Uamuzi</td>${items.map(p=>`<td><button onclick="waEnquiry('${p.name}','','${p.brand}')" class="btn btn-red btn-sm">💬 Omba Bei</button></td>`).join('')}</tr>
+    </tbody>
+  </table></div>
+  <div style="margin-top:1.5rem;padding:1.2rem;background:rgba(245,168,0,.06);border:1px solid rgba(245,168,0,.2);border-radius:8px">
+    <p style="font-size:.8rem;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.4rem">💡 Ushauri wa Tyre Plaza</p>
+    <p style="font-size:.85rem;color:var(--dim)">Bidhaa zote hapo juu zinapatikana dukani kwetu. Kama hujua kuchagua, tuma WhatsApp na tutakusaidia kulingana na gari lako na mahitaji yako.</p>
+  </div>`;
+  document.getElementById('compare-output').innerHTML=html;
+  document.getElementById('compare-output').classList.add('visible');
+}
+</script>
+</body>
+</html>
