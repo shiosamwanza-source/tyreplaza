@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Admin Panel – Tyre Plaza</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<style>
+body{background:#030810}
+.admin-wrap{display:grid;grid-template-columns:260px 1fr;min-height:100vh}
+.admin-sidebar{background:#060C22;border-right:1px solid var(--border);padding:1.5rem 0;position:fixed;top:0;left:0;bottom:0;width:260px;z-index:100;display:flex;flex-direction:column}
+.admin-logo{padding:1.2rem 1.5rem 1.5rem;border-bottom:1px solid var(--border)}
+
+.admin-logo-name span{color:var(--red2)}
+.admin-logo-sub{font-size:.65rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:.2rem}
+.admin-nav{padding:1.2rem 0;flex:1}
+.admin-nav-section{padding:.5rem 1.5rem .3rem;font-size:.62rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.admin-nav a{display:flex;align-items:center;gap:.7rem;padding:.75rem 1.5rem;font-size:.83rem;color:var(--dim);transition:all .2s;border-left:3px solid transparent}
+.admin-nav a:hover,.admin-nav a.active{background:rgba(192,24,26,.08);color:var(--white);border-left-color:var(--red)}
+.admin-nav a .nav-icon{font-size:1rem;width:20px;text-align:center;flex-shrink:0}
+.admin-sidebar-footer{padding:1.2rem 1.5rem;border-top:1px solid var(--border)}
+.admin-main{margin-left:260px;padding:0}
+.admin-topbar{background:#060C22;border-bottom:1px solid var(--border);padding:0 2rem;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:90}
+.admin-topbar-title{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;color:var(--white);text-transform:uppercase}
+.admin-content{padding:2rem}
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:2rem}
+.kpi-card{background:#0A1030;border:1px solid var(--border);border-radius:10px;padding:1.5rem;position:relative;overflow:hidden}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.kpi-card.k1::before{background:var(--red)}
+.kpi-card.k2::before{background:var(--gold)}
+.kpi-card.k3::before{background:#22C55E}
+.kpi-card.k4::before{background:#6EA8FF}
+.kpi-label{font-size:.68rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:.5rem}
+.kpi-val{font-family:'Montserrat',sans-serif;font-size:2.2rem;font-weight:900;color:var(--white);line-height:1}
+.kpi-sub{font-size:.72rem;color:var(--muted);margin-top:.4rem}
+.kpi-icon{position:absolute;right:1rem;top:50%;transform:translateY(-50%);font-size:2.5rem;opacity:.15}
+.section-card{background:#0A1030;border:1px solid var(--border);border-radius:10px;margin-bottom:1.5rem;overflow:hidden}
+.section-card-header{padding:1.2rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.section-card-title{font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:800;text-transform:uppercase;color:var(--white);letter-spacing:.08em}
+.section-card-body{padding:1.5rem}
+.product-row{display:flex;align-items:center;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--border)}
+.product-row:last-child{border-bottom:none}
+.prod-mini-img{width:52px;height:52px;border-radius:6px;object-fit:cover;background:var(--navy2);flex-shrink:0}
+.prod-mini-info{flex:1}
+.prod-mini-name{font-size:.85rem;font-weight:600;color:var(--white);margin-bottom:.2rem}
+.prod-mini-brand{font-size:.72rem;color:var(--muted)}
+.prod-mini-price{font-family:'Montserrat',sans-serif;font-size:.88rem;font-weight:700;color:var(--gold);flex-shrink:0}
+.prod-mini-actions{display:flex;gap:.4rem;flex-shrink:0}
+.btn-mini{background:none;border:1px solid var(--border);color:var(--muted);font-size:.72rem;padding:.3rem .6rem;border-radius:4px;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s}
+.btn-mini:hover{border-color:var(--red);color:var(--red2)}
+.btn-mini.green:hover{border-color:#22C55E;color:#22C55E}
+.inquiry-row{display:flex;gap:1rem;padding:.9rem 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.inquiry-row:last-child{border-bottom:none}
+.inq-avatar{width:38px;height:38px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:.9rem;font-weight:900;color:#fff;flex-shrink:0}
+.inq-info{flex:1}
+.inq-name{font-size:.85rem;font-weight:600;color:var(--white)}
+.inq-msg{font-size:.78rem;color:var(--muted);margin-top:.2rem;line-height:1.5}
+.inq-meta{font-size:.68rem;color:var(--muted);margin-top:.3rem}
+.inq-actions{display:flex;gap:.4rem;flex-shrink:0;flex-direction:column}
+.quick-stat{display:flex;justify-content:space-between;align-items:center;padding:.7rem 0;border-bottom:1px solid var(--border)}
+.quick-stat:last-child{border-bottom:none}
+.qs-label{font-size:.82rem;color:var(--dim)}
+.qs-val{font-size:.88rem;font-weight:700;color:var(--white)}
+.progress-bar{background:rgba(255,255,255,.05);border-radius:4px;height:6px;margin-top:.4rem;overflow:hidden}
+.progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--red),var(--gold))}
+.alert-item{display:flex;gap:.8rem;align-items:flex-start;padding:.9rem;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);border-radius:6px;margin-bottom:.7rem}
+.alert-item.green{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.2)}
+.alert-icon{font-size:1.2rem;flex-shrink:0}
+.alert-text{font-size:.8rem;color:var(--dim);line-height:1.5}
+.alert-text strong{color:var(--white)}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:9999;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal{background:#0A1030;border:1px solid var(--border);border-radius:12px;padding:2rem;width:90%;max-width:560px;position:relative}
+.modal-close{position:absolute;top:1rem;right:1rem;background:none;border:none;color:var(--muted);font-size:1.2rem;cursor:pointer}
+.modal h3{font-family:'Montserrat',sans-serif;font-size:1.1rem;text-transform:uppercase;color:var(--white);margin-bottom:1.2rem}
+@media(max-width:900px){.admin-wrap{grid-template-columns:1fr}.admin-sidebar{display:none}.admin-main{margin-left:0}.kpi-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.kpi-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN CHECK -->
+<div id="login-screen" style="display:flex;position:fixed;inset:0;background:#030810;z-index:99999;align-items:center;justify-content:center">
+  <div style="background:#0A1030;border:1px solid var(--border);border-radius:14px;padding:2.5rem;width:90%;max-width:380px;text-align:center">
+    <div style="font-size:3rem;margin-bottom:1rem">🔐</div>
+    <div style="font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:900;color:var(--white);margin-bottom:.3rem"><span style="color:var(--red2)">TYRE</span> PLAZA</div>
+    <div style="font-size:.7rem;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.5rem">Admin Panel Login</div>
+    <div class="form-group" style="text-align:left"><label class="form-label">Username</label><input class="form-control" id="login-user" placeholder="admin" /></div>
+    <div class="form-group" style="text-align:left"><label class="form-label">Password</label><input class="form-control" id="login-pass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"/></div>
+    <button onclick="doLogin()" class="btn btn-red btn-full btn-lg" style="margin-top:.5rem">🔓 Ingia Admin</button>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:1rem">Default: admin / tyre2025</p>
+  </div>
+</div>
+
+<div class="admin-wrap" id="admin-panel" style="display:none">
+  <!-- SIDEBAR -->
+  <aside class="admin-sidebar">
+    <div class="admin-logo">
+      <div class="admin-logo-name"><span>TYRE</span> PLAZA</div>
+      <div class="admin-logo-sub">Admin Dashboard</div>
+    </div>
+    <nav class="admin-nav">
+      <div class="admin-nav-section">Mwanzo</div>
+      <a href="#" class="active" onclick="showSection('dashboard',this)"><span class="nav-icon">📊</span> Dashboard</a>
+      <a href="#" onclick="showSection('analytics',this)"><span class="nav-icon">📈</span> Analytics</a>
+      <div class="admin-nav-section">Bidhaa</div>
+      <a href="#" onclick="showSection('products',this)"><span class="nav-icon">🛞</span> Bidhaa Zote</a>
+      <a href="#" onclick="showSection('add-product',this)"><span class="nav-icon">➕</span> Ongeza Bidhaa</a>
+      <a href="#" onclick="showSection('stock',this)"><span class="nav-icon">📦</span> Hali ya Stock</a>
+      <div class="admin-nav-section">Wateja</div>
+      <a href="#" onclick="showSection('inquiries',this)"><span class="nav-icon">💬</span> Maombi ya Bei</a>
+      <a href="#" onclick="showSection('rfq',this)"><span class="nav-icon">📋</span> RFQ Orders</a>
+      <div class="admin-nav-section">Maudhui</div>
+      <a href="#" onclick="showSection('blog',this)"><span class="nav-icon">📝</span> Blog & Makala</a>
+      <div class="admin-nav-section">Mipangilio</div>
+      <a href="#" onclick="showSection('settings',this)"><span class="nav-icon">⚙️</span> Mipangilio</a>
+      <a href="../index.html" target="_blank"><span class="nav-icon">🌐</span> Angalia Website</a>
+    </nav>
+    <div class="admin-sidebar-footer">
+      <div style="font-size:.75rem;color:var(--muted)">Umeingia kama: <strong style="color:var(--white)">Admin</strong></div>
+      <button onclick="doLogout()" style="background:none;border:none;color:var(--red2);font-size:.75rem;cursor:pointer;margin-top:.5rem">🚪 Toka</button>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="admin-main">
+    <div class="admin-topbar">
+      <div class="admin-topbar-title" id="page-title">📊 Dashboard</div>
+      <div style="display:flex;gap:.8rem;align-items:center">
+        <span style="font-size:.78rem;color:var(--muted)" id="admin-time"></span>
+        <button onclick="showSection('add-product',null)" class="btn btn-red btn-sm">➕ Bidhaa Mpya</button>
+      </div>
+    </div>
+
+    <div class="admin-content">
+
+      <!-- ═══ DASHBOARD ═══ -->
+      <div id="sec-dashboard">
+        <!-- ALERTS -->
+        <div style="margin-bottom:1.5rem">
+          <div class="alert-item"><div class="alert-icon">⚠️</div><div class="alert-text"><strong>Stock Chache:</strong> BF Goodrich All-Terrain 265/65R17 – imebaki vitengo 3 tu. Agiza upya haraka.</div></div>
+          <div class="alert-item"><div class="alert-icon">⚠️</div><div class="alert-text"><strong>Stock Chache:</strong> Goodyear Excellence 205/55R16 – vitengo 5. Fikiria kuagiza.</div></div>
+          <div class="alert-item green"><div class="alert-icon">✅</div><div class="alert-text"><strong>Stock Nzuri:</strong> Blackhawk HS918 315/80R22.5 – vitengo 47 stokini. Sawa.</div></div>
+        </div>
+
+        <!-- KPIs -->
+        <div class="kpi-grid">
+          <div class="kpi-card k1"><div class="kpi-label">Bidhaa Stokini</div><div class="kpi-val" data-target="127" data-suffix="">0</div><div class="kpi-sub">📦 Stock lines zote</div><div class="kpi-icon">🛞</div></div>
+          <div class="kpi-card k2"><div class="kpi-label">Maombi ya Bei (Wiki)</div><div class="kpi-val" data-target="34" data-suffix="">0</div><div class="kpi-sub">💬 WhatsApp inquiries</div><div class="kpi-icon">📨</div></div>
+          <div class="kpi-card k3"><div class="kpi-label">Brand Tunazouza</div><div class="kpi-val" data-target="9" data-suffix="+">0+</div><div class="kpi-sub">⭐ International brands</div><div class="kpi-icon">🏷️</div></div>
+          <div class="kpi-card k4"><div class="kpi-label">Matawi</div><div class="kpi-val" data-target="2">0</div><div class="kpi-sub">📍 Mwanza & Arusha</div><div class="kpi-icon">🗺️</div></div>
+        </div>
+
+        <div class="grid-2">
+          <!-- RECENT INQUIRIES -->
+          <div class="section-card">
+            <div class="section-card-header">
+              <div class="section-card-title">💬 Maombi ya Hivi Karibuni</div>
+              <button onclick="showSection('inquiries',null)" class="btn-mini green">Zote →</button>
+            </div>
+            <div class="section-card-body">
+              <div class="inquiry-row"><div class="inq-avatar">JM</div><div class="inq-info"><div class="inq-name">John Mwita</div><div class="inq-msg">Nataka bei ya Blackhawk HS918 315/80R22.5 – vitengo 10</div><div class="inq-meta">📞 0755 234 567 · ⏰ Leo, 10:32am</div></div><div class="inq-actions"><a href="https://wa.me/255755234567" target="_blank" class="btn btn-red btn-sm">💬</a><button class="btn-mini green">✓ Done</button></div></div>
+              <div class="inquiry-row"><div class="inq-avatar">SK</div><div class="inq-info"><div class="inq-name">Said Kasim</div><div class="inq-msg">Fleet quotation – malori 8, tairi 32 za 11.00R20</div><div class="inq-meta">📞 0767 891 234 · ⏰ Jana, 3:45pm</div></div><div class="inq-actions"><a href="https://wa.me/255767891234" target="_blank" class="btn btn-red btn-sm">💬</a><button class="btn-mini green">✓ Done</button></div></div>
+              <div class="inquiry-row"><div class="inq-avatar">AM</div><div class="inq-info"><div class="inq-name">Amina Mohamed</div><div class="inq-msg">Betri ya Toyota Vitz – 45Ah. Bei gani?</div><div class="inq-meta">📞 0783 456 789 · ⏰ Jana, 11:20am</div></div><div class="inq-actions"><a href="https://wa.me/255783456789" target="_blank" class="btn btn-red btn-sm">💬</a><button class="btn-mini green">✓ Done</button></div></div>
+              <div class="inquiry-row"><div class="inq-avatar">HK</div><div class="inq-info"><div class="inq-name">Hassan Kamau</div><div class="inq-msg">265/65R17 BF Goodrich – bei na upatikanaji?</div><div class="inq-meta">📞 0712 345 678 · ⏰ Juzi, 9:15am</div></div><div class="inq-actions"><a href="https://wa.me/255712345678" target="_blank" class="btn btn-red btn-sm">💬</a><button class="btn-mini">Pending</button></div></div>
+            </div>
+          </div>
+
+          <!-- STOCK STATUS -->
+          <div>
+            <div class="section-card" style="margin-bottom:1.2rem">
+              <div class="section-card-header">
+                <div class="section-card-title">📦 Hali ya Stock</div>
+                <button onclick="showSection('stock',null)" class="btn-mini green">Zote →</button>
+              </div>
+              <div class="section-card-body">
+                <div class="quick-stat"><span class="qs-label">Blackhawk HS918 315/80R22.5</span><span class="qs-val">47 pcs</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width:85%;background:linear-gradient(90deg,#22C55E,#16A34A)"></div></div>
+                <div class="quick-stat" style="margin-top:.8rem"><span class="qs-label">Dynablack 11.00R20</span><span class="qs-val">31 pcs</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div>
+                <div class="quick-stat" style="margin-top:.8rem"><span class="qs-label">BF Goodrich 265/65R17</span><span class="qs-val" style="color:var(--orange)">3 pcs ⚠️</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width:10%;background:var(--orange)"></div></div>
+                <div class="quick-stat" style="margin-top:.8rem"><span class="qs-label">Goodyear Excellence 205/55R16</span><span class="qs-val" style="color:var(--orange)">5 pcs</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width:15%;background:var(--orange)"></div></div>
+                <div class="quick-stat" style="margin-top:.8rem"><span class="qs-label">Betri Omeron 60Ah</span><span class="qs-val">89 pcs</span></div>
+                <div class="progress-bar"><div class="progress-fill" style="width:95%;background:#22C55E"></div></div>
+              </div>
+            </div>
+
+            <div class="section-card">
+              <div class="section-card-header"><div class="section-card-title">⚡ Vitendo vya Haraka</div></div>
+              <div class="section-card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem">
+                <button onclick="showSection('add-product',null)" class="btn btn-red btn-sm btn-full">➕ Bidhaa Mpya</button>
+                <a href="https://wa.me/255767638987" target="_blank" class="btn btn-gold btn-sm btn-full">💬 WhatsApp</a>
+                <a href="../pages/catalog.html" target="_blank" class="btn btn-outline btn-sm btn-full">🛞 Katalogi</a>
+                <button onclick="showSection('settings',null)" class="btn btn-outline btn-sm btn-full">⚙️ Mipangilio</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- end dashboard -->
+
+      <!-- ═══ ADD PRODUCT ═══ -->
+      <div id="sec-add-product" style="display:none">
+        <h2 style="font-family:'Montserrat',sans-serif;font-size:1.3rem;text-transform:uppercase;color:var(--white);margin-bottom:1.5rem">➕ Ongeza Bidhaa Mpya</h2>
+        <div class="section-card">
+          <div class="section-card-body">
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Jina la Bidhaa *</label><input class="form-control" id="p-name" placeholder="e.g. HS918 Drive Tyre"/></div>
+              <div class="form-group"><label class="form-label">Brand *</label><select class="form-control" id="p-brand"><option>Blackhawk</option><option>Dynablack</option><option>Royalblack</option><option>Dunlop</option><option>BF Goodrich</option><option>Goodyear</option><option>GT Radial</option><option>Solachei</option><option>Evergreen</option><option>Omeron</option><option>Nyingine</option></select></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Aina ya Bidhaa *</label><select class="form-control" id="p-type"><option>Tairi – Malori / Truck</option><option>Tairi – Passenger</option><option>Tairi – SUV/4x4</option><option>Tairi – Bus/Mabasi</option><option>Betri – Car</option><option>Betri – Truck</option><option>Rim – Alloy</option><option>Rim – Steel</option></select></div>
+              <div class="form-group"><label class="form-label">Upatikanaji</label><select class="form-control" id="p-avail"><option value="in">✅ Inapatikana Sasa</option><option value="low">⚠️ Stock Chache</option><option value="order">📦 Agiza Mapema</option></select></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Size(s) – mstari kwa kila size</label><textarea class="form-control" id="p-sizes" placeholder="315/80R22.5&#10;295/80R22.5&#10;275/80R22.5" style="min-height:80px"></textarea></div>
+              <div class="form-group"><label class="form-label">Specs (Warranty, Origin, n.k.)</label><textarea class="form-control" id="p-specs" placeholder="1yr Warranty&#10;China&#10;Heavy Duty" style="min-height:80px"></textarea></div>
+            </div>
+            <div class="form-row">
+              <div class="form-group"><label class="form-label">Maelezo ya Bidhaa</label><textarea class="form-control" id="p-desc" placeholder="Maelezo mafupi ya bidhaa hii..."></textarea></div>
+              <div class="form-group"><label class="form-label">Nambari ya Stoki</label><input class="form-control" id="p-stock" type="number" placeholder="e.g. 25"/></div>
+            </div>
+            <div style="display:flex;gap:1rem;margin-top:.5rem">
+              <button onclick="saveProduct()" class="btn btn-red btn-lg">💾 Hifadhi Bidhaa</button>
+              <button onclick="showSection('products',null)" class="btn btn-outline">Angalia Bidhaa Zote →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ PRODUCTS ═══ -->
+      <div id="sec-products" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+          <h2 style="font-family:'Montserrat',sans-serif;font-size:1.3rem;text-transform:uppercase;color:var(--white)">🛞 Bidhaa Zote</h2>
+          <button onclick="showSection('add-product',null)" class="btn btn-red btn-sm">➕ Ongeza Mpya</button>
+        </div>
+        <div class="section-card">
+          <div class="section-card-header"><div class="section-card-title">Orodha ya Bidhaa – Stock ya Sasa</div></div>
+          <div style="overflow-x:auto">
+            <table class="tp-table">
+              <thead><tr><th>Bidhaa</th><th>Brand</th><th>Aina</th><th>Sizes</th><th>Stock</th><th>Hali</th><th>Vitendo</th></tr></thead>
+              <tbody id="products-tbody">
+                <tr><td><strong style="color:var(--white)">HS918 Drive Tyre</strong></td><td>Blackhawk</td><td>Truck</td><td>315/80R22.5, 295/80R22.5</td><td>47</td><td><span class="badge badge-green">In Stock</span></td><td><button class="btn-mini green">✏️</button> <button class="btn-mini">🗑️</button></td></tr>
+                <tr><td><strong style="color:var(--white)">Heavy Duty Drive</strong></td><td>Dynablack</td><td>Truck/Bus</td><td>11.00R20, 10.00R20</td><td>31</td><td><span class="badge badge-green">In Stock</span></td><td><button class="btn-mini green">✏️</button> <button class="btn-mini">🗑️</button></td></tr>
+                <tr><td><strong style="color:var(--white)">All-Terrain KO2</strong></td><td>BF Goodrich</td><td>SUV/4x4</td><td>265/65R17, 285/60R18</td><td>3</td><td><span class="badge badge-orange">Stock Chache</span></td><td><button class="btn-mini green">✏️</button> <button class="btn-mini">🗑️</button></td></tr>
+                <tr><td><strong style="color:var(--white)">Excellence Radial</strong></td><td>Goodyear</td><td>Passenger</td><td>195/65R15, 205/55R16</td><td>5</td><td><span class="badge badge-orange">Stock Chache</span></td><td><button class="btn-mini green">✏️</button> <button class="btn-mini">🗑️</button></td></tr>
+                <tr><td><strong style="color:var(--white)">Car Battery 60Ah</strong></td><td>Omeron</td><td>Betri</td><td>45Ah, 60Ah, 75Ah</td><td>89</td><td><span class="badge badge-green">In Stock</span></td><td><button class="btn-mini green">✏️</button> <button class="btn-mini">🗑️</button></td></tr>
+                <tr><td><strong style="color:var(--white)">SP Sport Maxx</strong></td><td>Dunlop</td><td>Passenger</td><td>185/65R15, 205/55R16</td><td>22</td><td><span class="badge badge-green">In Stock</span></td><td><button class="btn-mini green">✏️</button> <button class="btn-mini">🗑️</button></td></tr>
+                <tr><td id="new-products-placeholder" colspan="7" style="text-align:center;color:var(--muted);font-size:.8rem;padding:1.5rem">Bidhaa mpya zitaonekana hapa baada ya kuziongeza.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ INQUIRIES ═══ -->
+      <div id="sec-inquiries" style="display:none">
+        <h2 style="font-family:'Montserrat',sans-serif;font-size:1.3rem;text-transform:uppercase;color:var(--white);margin-bottom:1.5rem">💬 Maombi ya Bei – Wateja</h2>
+        <div class="section-card">
+          <div class="section-card-body">
+            <div class="inquiry-row"><div class="inq-avatar">JM</div><div class="inq-info"><div class="inq-name">John Mwita · 0755 234 567</div><div class="inq-msg">Nataka bei ya Blackhawk HS918 315/80R22.5 – vitengo 10 kwa malori yangu. Fleet order.</div><div class="inq-meta">📅 Leo, 10:32am · 🏷️ Fleet Order</div></div><div class="inq-actions"><a href="https://wa.me/255755234567?text=Habari%20John!%20Bei%20ya%20Blackhawk%20HS918%20315%2F80R22.5%20ni..." target="_blank" class="btn btn-red btn-sm">💬 Jibu</a><button class="btn-mini green" onclick="showToast('Imewekwa kama imeshughulikwa','green')">✓ Done</button></div></div>
+            <div class="inquiry-row"><div class="inq-avatar">SK</div><div class="inq-info"><div class="inq-name">Said Kasim · 0767 891 234</div><div class="inq-msg">Fleet quotation – malori 8, tairi 32 za 11.00R20 Dynablack. Nahitaji delivery Dar es Salaam.</div><div class="inq-meta">📅 Jana, 3:45pm · 🏷️ Fleet/Bulk</div></div><div class="inq-actions"><a href="https://wa.me/255767891234" target="_blank" class="btn btn-red btn-sm">💬 Jibu</a><button class="btn-mini green" onclick="showToast('Imewekwa kama imeshughulikwa','green')">✓ Done</button></div></div>
+            <div class="inquiry-row"><div class="inq-avatar">AM</div><div class="inq-info"><div class="inq-name">Amina Mohamed · 0783 456 789</div><div class="inq-msg">Betri ya Toyota Vitz 2008 – inahitaji 45Ah. Bei gani na mna warranty?</div><div class="inq-meta">📅 Jana, 11:20am · 🏷️ Betri</div></div><div class="inq-actions"><a href="https://wa.me/255783456789" target="_blank" class="btn btn-red btn-sm">💬 Jibu</a><button class="btn-mini" onclick="showToast('Bado haijashughulikwa','red')">⏳ Pending</button></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ STOCK ═══ -->
+      <div id="sec-stock" style="display:none">
+        <h2 style="font-family:'Montserrat',sans-serif;font-size:1.3rem;text-transform:uppercase;color:var(--white);margin-bottom:1.5rem">📦 Hali ya Stock</h2>
+        <div class="section-card">
+          <div style="overflow-x:auto">
+            <table class="tp-table">
+              <thead><tr><th>Bidhaa</th><th>Brand</th><th>Size</th><th>Stock</th><th>Hali</th><th>Hatua</th></tr></thead>
+              <tbody>
+                <tr><td><strong style="color:var(--white)">HS918 Drive</strong></td><td>Blackhawk</td><td>315/80R22.5</td><td><span style="color:#22C55E;font-weight:700">47</span></td><td><span class="badge badge-green">✅ Nzuri</span></td><td><button class="btn-mini green">+Stock</button></td></tr>
+                <tr><td><strong style="color:var(--white)">Heavy Duty</strong></td><td>Dynablack</td><td>11.00R20</td><td><span style="color:#22C55E;font-weight:700">31</span></td><td><span class="badge badge-green">✅ Nzuri</span></td><td><button class="btn-mini green">+Stock</button></td></tr>
+                <tr><td><strong style="color:var(--white)">All-Terrain KO2</strong></td><td>BF Goodrich</td><td>265/65R17</td><td><span style="color:var(--orange);font-weight:700">3</span></td><td><span class="badge badge-orange">⚠️ Chache</span></td><td><button class="btn btn-red btn-sm" onclick="waEnquiry('Order: BF Goodrich KO2','265/65R17','Supplier')">📋 Agiza</button></td></tr>
+                <tr><td><strong style="color:var(--white)">Excellence</strong></td><td>Goodyear</td><td>205/55R16</td><td><span style="color:var(--orange);font-weight:700">5</span></td><td><span class="badge badge-orange">⚠️ Chache</span></td><td><button class="btn btn-red btn-sm" onclick="waEnquiry('Order: Goodyear Excellence','205/55R16','Supplier')">📋 Agiza</button></td></tr>
+                <tr><td><strong style="color:var(--white)">Car Battery 60Ah</strong></td><td>Omeron</td><td>60Ah</td><td><span style="color:#22C55E;font-weight:700">89</span></td><td><span class="badge badge-green">✅ Nzuri</span></td><td><button class="btn-mini green">+Stock</button></td></tr>
+                <tr><td><strong style="color:var(--white)">Truck Battery 150Ah</strong></td><td>Various</td><td>150Ah</td><td><span style="color:#22C55E;font-weight:700">24</span></td><td><span class="badge badge-green">✅ Nzuri</span></td><td><button class="btn-mini green">+Stock</button></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SETTINGS ═══ -->
+      <div id="sec-settings" style="display:none">
+        <h2 style="font-family:'Montserrat',sans-serif;font-size:1.3rem;text-transform:uppercase;color:var(--white);margin-bottom:1.5rem">⚙️ Mipangilio ya Website</h2>
+        <div class="grid-2">
+          <div class="section-card">
+            <div class="section-card-header"><div class="section-card-title">📞 Nambari za Mawasiliano</div></div>
+            <div class="section-card-body">
+              <div class="form-group"><label class="form-label">WhatsApp / Mwanza (Makao)</label><input class="form-control" value="+255 767 638 987"/></div>
+              <div class="form-group"><label class="form-label">Simu 2 – Mwanza</label><input class="form-control" value="+255 785 193 440"/></div>
+              <div class="form-group"><label class="form-label">Simu – Arusha</label><input class="form-control" value="+255 678 700 700"/></div>
+              <div class="form-group"><label class="form-label">Barua Pepe</label><input class="form-control" value="info@tyreplaza.co.tz"/></div>
+              <button onclick="showToast('Mabadiliko yamehifadhiwa!','green')" class="btn btn-red btn-sm">💾 Hifadhi</button>
+            </div>
+          </div>
+          <div class="section-card">
+            <div class="section-card-header"><div class="section-card-title">🏪 Taarifa za Duka</div></div>
+            <div class="section-card-body">
+              <div class="form-group"><label class="form-label">Jina la Duka</label><input class="form-control" value="Tyre Plaza"/></div>
+              <div class="form-group"><label class="form-label">Anwani – Mwanza</label><input class="form-control" value="Pamba Road, Sahara, Mwanza"/></div>
+              <div class="form-group"><label class="form-label">P.O. Box</label><input class="form-control" value="10097, Mwanza"/></div>
+              <div class="form-group"><label class="form-label">Saa za Kazi</label><input class="form-control" value="Jumatatu–Jumamosi: 7:30am–6:30pm"/></div>
+              <button onclick="showToast('Mabadiliko yamehifadhiwa!','green')" class="btn btn-red btn-sm">💾 Hifadhi</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card" style="margin-top:1.2rem">
+          <div class="section-card-header"><div class="section-card-title">🔐 Badilisha Nenosiri</div></div>
+          <div class="section-card-body" style="max-width:400px">
+            <div class="form-group"><label class="form-label">Nenosiri la Sasa</label><input class="form-control" type="password" placeholder="••••••••"/></div>
+            <div class="form-group"><label class="form-label">Nenosiri Jipya</label><input class="form-control" type="password" placeholder="••••••••"/></div>
+            <div class="form-group"><label class="form-label">Thibitisha Nenosiri Jipya</label><input class="form-control" type="password" placeholder="••••••••"/></div>
+            <button onclick="showToast('Nenosiri limebadilishwa!','green')" class="btn btn-red btn-sm">🔐 Badilisha</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- OTHER STUBS -->
+      <div id="sec-analytics" style="display:none">
+        <h2 style="font-family:'Montserrat',sans-serif;font-size:1.3rem;text-transform:uppercase;color:var(--white);margin-bottom:1.5rem">📈 Analytics</h2>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:3rem;text-align:center">
+          <div style="font-size:4rem;margin-bottom:1rem">📊</div>
+          <h3 style="color:var(--white);margin-bottom:.7rem">Analytics Dashboard</h3>
+          <p style="color:var(--muted);font-size:.88rem;margin-bottom:1.5rem">Unganisha Google Analytics na Meta Pixel kwenye website yako ili uone takwimu za wageni, views za bidhaa, na WhatsApp clicks.</p>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+            <a href="https://analytics.google.com" target="_blank" class="btn btn-red">📈 Google Analytics →</a>
+            <a href="https://search.google.com/search-console" target="_blank" class="btn btn-outline">🔍 Search Console →</a>
+          </div>
+        </div>
+      </div>
+      <div id="sec-rfq" style="display:none">
+        <h2 style="font-family:'Montserrat',sans-serif;font-size:1.3rem;text-transform:uppercase;color:var(--white);margin-bottom:1.5rem">📋 RFQ Orders</h2>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:2rem;text-align:center">
+          <div style="font-size:3rem;margin-bottom:.8rem">📋</div>
+          <p style="color:var(--muted)">Maombi ya RFQ yanakuja kwa WhatsApp. <a href="https://wa.me/255767638987" target="_blank" style="color:var(--gold)">Angalia WhatsApp →</a></p>
+        </div>
+      </div>
+      <div id="sec-blog" style="display:none">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.5rem;flex-wrap:wrap;gap:1rem">
+          <h2 style="font-family:'Montserrat',sans-serif;font-size:1.3rem;text-transform:uppercase;color:var(--white)">📝 Blog & Makala</h2>
+          <a href="../blog/index.html" target="_blank" class="btn btn-outline btn-sm">Angalia Blog →</a>
+        </div>
+        <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:2rem">
+          <table class="tp-table">
+            <thead><tr><th>Kichwa</th><th>Kategoria</th><th>Tarehe</th><th>Hali</th><th>Vitendo</th></tr></thead>
+            <tbody>
+              <tr><td><strong style="color:var(--white)">Jinsi ya Kusoma Ukubwa wa Tairi</strong></td><td>Tairi</td><td>Juni 2025</td><td><span class="badge badge-green">Imechapishwa</span></td><td><a href="../blog/kusoma-ukubwa-tairi.html" target="_blank" class="btn-mini green">👁️</a></td></tr>
+              <tr><td><strong style="color:var(--white)">Dalili 7 za Betri Kuharibika</strong></td><td>Betri</td><td>Mei 2025</td><td><span class="badge badge-green">Imechapishwa</span></td><td><a href="../blog/dalili-betri-kuharibika.html" target="_blank" class="btn-mini green">👁️</a></td></tr>
+              <tr><td><strong style="color:var(--white)">Alloy vs Steel Rims</strong></td><td>Rims</td><td>Aprili 2025</td><td><span class="badge badge-green">Imechapishwa</span></td><td><a href="../blog/alloy-vs-steel-rims.html" target="_blank" class="btn-mini green">👁️</a></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div><!-- end admin-content -->
+  </main>
+</div><!-- end admin-wrap -->
+
+<script src="../js/main.js"></script>
+<script>
+// Login
+function doLogin(){
+  const u=document.getElementById('login-user').value;
+  const p=document.getElementById('login-pass').value;
+  if(u==='admin'&&p==='tyre2025'){
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('admin-panel').style.display='grid';
+    updateTime();setInterval(updateTime,1000);
+  } else {
+    document.getElementById('login-user').style.borderColor='var(--red)';
+    document.getElementById('login-pass').style.borderColor='var(--red)';
+    showToast('Jina au nenosiri si sahihi!','red');
+  }
+}
+function doLogout(){if(confirm('Una uhakika wa kutoka?')){document.getElementById('admin-panel').style.display='none';document.getElementById('login-screen').style.display='flex';document.getElementById('login-user').value='';document.getElementById('login-pass').value='';}}
+function updateTime(){const n=new Date();document.getElementById('admin-time').textContent=n.toLocaleTimeString('sw-TZ',{hour:'2-digit',minute:'2-digit'});}
+
+// Navigation
+function showSection(id,el){
+  document.querySelectorAll('[id^="sec-"]').forEach(s=>s.style.display='none');
+  const sec=document.getElementById('sec-'+id);
+  if(sec) sec.style.display='';
+  const titles={dashboard:'📊 Dashboard',analytics:'📈 Analytics',products:'🛞 Bidhaa Zote','add-product':'➕ Bidhaa Mpya',stock:'📦 Hali ya Stock',inquiries:'💬 Maombi ya Bei',rfq:'📋 RFQ Orders',blog:'📝 Blog',settings:'⚙️ Mipangilio'};
+  document.getElementById('page-title').textContent=titles[id]||'Dashboard';
+  document.querySelectorAll('.admin-nav a').forEach(a=>a.classList.remove('active'));
+  if(el) el.classList.add('active');
+}
+
+// Save product
+const savedProducts=[];
+function saveProduct(){
+  const n=document.getElementById('p-name').value;
+  const b=document.getElementById('p-brand').value;
+  const t=document.getElementById('p-type').value;
+  const s=document.getElementById('p-sizes').value;
+  const st=document.getElementById('p-stock').value;
+  const av=document.getElementById('p-avail').value;
+  if(!n){showToast('Jaza jina la bidhaa!','red');return}
+  savedProducts.push({n,b,t,s,st,av});
+  const tbody=document.getElementById('products-tbody');
+  const ph=document.getElementById('new-products-placeholder');
+  if(ph) ph.remove();
+  const tr=document.createElement('tr');
+  tr.innerHTML=`<td><strong style="color:var(--white)">${n}</strong></td><td>${b}</td><td>${t.split('–')[1]||t}</td><td>${s.replace(/\n/g,', ')}</td><td>${st||'?'}</td><td><span class="badge ${av==='in'?'badge-green':av==='low'?'badge-orange':'badge-blue'}">${av==='in'?'In Stock':av==='low'?'Chache':'Agiza'}</span></td><td><button class="btn-mini green">✏️</button> <button class="btn-mini">🗑️</button></td>`;
+  tbody.appendChild(tr);
+  showToast(`✓ "${n}" imehifadhiwa!`,'green');
+  showSection('products',null);
+  document.getElementById('p-name').value='';document.getElementById('p-sizes').value='';document.getElementById('p-stock').value='';
+}
+</script>
+</body>
+</html>
