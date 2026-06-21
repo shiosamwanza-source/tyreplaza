@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Blog ya Maarifa – Tyre Plaza</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<style>
+.blog-card{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column}
+.blog-card:hover{border-color:rgba(192,24,26,.4);transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.4)}
+.blog-thumb{height:180px;background:linear-gradient(135deg,var(--navy2),var(--navy3));display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden}
+.blog-thumb .blog-cat-badge{position:absolute;top:.8rem;left:.8rem}
+.blog-body{padding:1.5rem;flex:1;display:flex;flex-direction:column}
+.blog-title{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;color:var(--white);line-height:1.35;margin-bottom:.7rem}
+.blog-excerpt{font-size:.82rem;color:var(--muted);line-height:1.7;flex:1;margin-bottom:1rem}
+.blog-meta{font-size:.7rem;color:var(--muted);display:flex;gap:1rem;flex-wrap:wrap;padding-top:.8rem;border-top:1px solid var(--border)}
+.blog-featured{background:var(--navy2);border:1px solid rgba(245,168,0,.2);border-radius:12px;padding:2.5rem;display:grid;grid-template-columns:1fr 1.4fr;gap:2.5rem;align-items:center;margin-bottom:3rem}
+.blog-featured .feat-icon{font-size:6rem;text-align:center}
+.blog-featured .feat-cat{font-size:.72rem;color:var(--gold);font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.6rem}
+.blog-featured .feat-title{font-family:'Montserrat',sans-serif;font-size:1.5rem;font-weight:900;color:var(--white);line-height:1.25;margin-bottom:.8rem}
+.blog-featured .feat-excerpt{font-size:.88rem;color:var(--dim);line-height:1.75;margin-bottom:1.2rem}
+@media(max-width:768px){.blog-featured{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="nav-brand"><div class="nav-brand-name"><span>TYRE</span> PLAZA</div><div class="nav-brand-sub">Mwanza · Tanzania</div></div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Nyumbani</a></li><li><a href="../pages/catalog.html">Bidhaa</a></li>
+    <li><a href="../pages/gallery.html">Picha</a></li><li><a href="../pages/about.html">Kuhusu</a></li>
+    <li><a href="index.html">Blog</a></li><li><a href="../pages/contact.html">Wasiliana</a></li>
+    <li><a href="../admin/index.html" class="nav-cta">⚙ Admin</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="../index.html">Nyumbani</a><span class="breadcrumb-sep">›</span><span>Blog</span></div>
+  <h1 class="page-hero-title">Blog ya <span class="accent">Maarifa</span></h1>
+  <p class="page-hero-desc">Makala za elimu kuhusu tairi, betri, rims na utunzaji wa magari. Jifunze kuchagua bidhaa sahihi kwa gari lako.</p>
+</div>
+
+<section class="section section-dark">
+  <!-- Category filter -->
+  <div class="tag-filter">
+    <button class="tag-btn active" data-cat="all">📝 Makala Zote</button>
+    <button class="tag-btn" data-cat="tyres">🛞 Tairi</button>
+    <button class="tag-btn" data-cat="battery">⚡ Betri</button>
+    <button class="tag-btn" data-cat="rims">🔩 Rims</button>
+    <button class="tag-btn" data-cat="tips">💡 Vidokezo</button>
+  </div>
+
+  <!-- FEATURED -->
+  <div class="blog-featured fade-up">
+    <div class="feat-icon">🛞</div>
+    <div>
+      <div class="feat-cat">⭐ Makala Maarufu – Tairi</div>
+      <div class="feat-title">Jinsi ya Kusoma Ukubwa wa Tairi: 265/65R17 Inamaanisha Nini?</div>
+      <p class="feat-excerpt">Kila tairi ina nambari muhimu zilizopigwa kwenye ukanda wake. Lakini wengi hawajui maana yake. Katika makala hii, tunakufundisha kusoma ukubwa wa tairi hatua kwa hatua ili uweze kuchagua tairi sahihi kwa gari lako.</p>
+      <div style="display:flex;gap:.7rem;align-items:center;flex-wrap:wrap">
+        <a href="kusoma-ukubwa-tairi.html" class="btn btn-red btn-sm">Soma Makala →</a>
+        <span style="font-size:.72rem;color:var(--muted)">📅 Juni 2025 · ⏱️ Dakika 4 · 👁️ 1.2K wasomaji</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <div class="grid-3">
+    <div class="blog-card fade-up" data-filter="tyres">
+      <div class="blog-thumb">🛞<div class="blog-cat-badge"><span class="badge badge-red">Tairi</span></div></div>
+      <div class="blog-body">
+        <div class="blog-title">Dalili 5 za Tairi Yako Kuhitaji Kubadilishwa Haraka</div>
+        <p class="blog-excerpt">Tairi mbaya ni hatari barabarani. Jua dalili hizi mapema ili usalama wako na familia yako utunzwe...</p>
+        <div class="blog-meta"><span>📅 Julai 2025</span><span>⏱️ Dakika 3</span></div>
+        <a href="#" class="btn btn-outline-red btn-sm mt-2">Soma Zaidi →</a>
+      </div>
+    </div>
+
+    <div class="blog-card fade-up" data-filter="battery">
+      <div class="blog-thumb">⚡<div class="blog-cat-badge"><span class="badge badge-gold">Betri</span></div></div>
+      <div class="blog-body">
+        <div class="blog-title">Dalili 7 za Betri ya Gari Lako Kuharibika – Usikawile</div>
+        <p class="blog-excerpt">Betri mbaya inaweza kukuzuia safari muhimu. Jua dalili mapema ili uepuke shida barabarani au hospitalini...</p>
+        <div class="blog-meta"><span>📅 Mei 2025</span><span>⏱️ Dakika 5</span></div>
+        <a href="dalili-betri-kuharibika.html" class="btn btn-outline-red btn-sm mt-2">Soma Zaidi →</a>
+      </div>
+    </div>
+
+    <div class="blog-card fade-up" data-filter="rims">
+      <div class="blog-thumb">🔩<div class="blog-cat-badge"><span class="badge badge-blue">Rims</span></div></div>
+      <div class="blog-body">
+        <div class="blog-title">Faida za Alloy Rims Dhidi ya Steel Rims – Upi Bora?</div>
+        <p class="blog-excerpt">Wengi wanauliza: alloy rims au steel rims? Tunalinganisha faida, hasara na bei ili ukuwe uamuzi sahihi...</p>
+        <div class="blog-meta"><span>📅 Aprili 2025</span><span>⏱️ Dakika 6</span></div>
+        <a href="alloy-vs-steel-rims.html" class="btn btn-outline-red btn-sm mt-2">Soma Zaidi →</a>
+      </div>
+    </div>
+
+    <div class="blog-card fade-up" data-filter="tips">
+      <div class="blog-thumb">💡<div class="blog-cat-badge"><span class="badge badge-green">Vidokezo</span></div></div>
+      <div class="blog-body">
+        <div class="blog-title">Jinsi ya Kutunza Tairi Zako Zidumu Muda Mrefu</div>
+        <p class="blog-excerpt">Tairi nzuri zinaweza kudumu miaka mingi ukizitunza vizuri. Vidokezo hivi vitakusaidia kuokoa pesa...</p>
+        <div class="blog-meta"><span>📅 Machi 2025</span><span>⏱️ Dakika 4</span></div>
+        <a href="#" class="btn btn-outline-red btn-sm mt-2">Soma Zaidi →</a>
+      </div>
+    </div>
+
+    <div class="blog-card fade-up" data-filter="tyres">
+      <div class="blog-thumb">🚛<div class="blog-cat-badge"><span class="badge badge-red">Tairi</span></div></div>
+      <div class="blog-body">
+        <div class="blog-title">Tofauti ya Drive Tyre na Steer Tyre – Malori na Mabasi</div>
+        <p class="blog-excerpt">Wengi hawajui kwa nini tairi za mbele na za nyuma za malori ni tofauti. Makala hii inakueleza kwa lugha rahisi...</p>
+        <div class="blog-meta"><span>📅 Februari 2025</span><span>⏱️ Dakika 5</span></div>
+        <a href="#" class="btn btn-outline-red btn-sm mt-2">Soma Zaidi →</a>
+      </div>
+    </div>
+
+    <div class="blog-card fade-up" data-filter="tips">
+      <div class="blog-thumb">🌡️<div class="blog-cat-badge"><span class="badge badge-green">Vidokezo</span></div></div>
+      <div class="blog-body">
+        <div class="blog-title">Shinikizo la Hewa (Tyre Pressure) – Kwa Nini ni Muhimu Sana?</div>
+        <p class="blog-excerpt">Shinikizo lisilo sahihi la hewa ndio sababu kubwa ya tairi kuharibika mapema. Jifunze kiwango sahihi kwa gari lako...</p>
+        <div class="blog-meta"><span>📅 Januari 2025</span><span>⏱️ Dakika 3</span></div>
+        <a href="#" class="btn btn-outline-red btn-sm mt-2">Soma Zaidi →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsletter CTA -->
+  <div style="margin-top:3rem;background:var(--navy2);border:1px solid rgba(245,168,0,.15);border-radius:12px;padding:2.5rem;text-align:center">
+    <h3 style="font-family:'Montserrat',sans-serif;font-size:1.3rem;text-transform:uppercase;color:var(--white);margin-bottom:.5rem">💬 Pata Makala Mpya kwa <span style="color:var(--gold)">WhatsApp</span></h3>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.5rem">Jiunge na wateja wetu – tutakutumia makala mpya, bei maalum na habari za bidhaa mpya.</p>
+    <a href="https://wa.me/255767638987?text=Habari!%20Nataka%20kupata%20makala%20na%20bei%20mpya%20za%20Tyre%20Plaza%20kwa%20WhatsApp." target="_blank" class="btn btn-gold btn-lg">💬 Jiunge Sasa – WhatsApp →</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Tyre Plaza Ltd · <a href="../index.html" style="color:var(--muted)">Nyumbani</a></div>
+    <div class="footer-powered">Powered by <a href="#">TEUS Technology</a></div>
+  </div>
+</footer>
+<a href="https://wa.me/255767638987" class="wa-float" target="_blank">💬</a>
+<script src="../js/main.js"></script>
+</body>
+</html>
