@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Wasiliana – Tyre Plaza Mwanza</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<style>
+.contact-method-card{background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:1.8rem;display:flex;gap:1.2rem;align-items:flex-start;transition:all .2s;cursor:pointer}
+.contact-method-card:hover{border-color:rgba(192,24,26,.4);transform:translateY(-3px)}
+.cm-icon{width:50px;height:50px;background:rgba(192,24,26,.12);border:1px solid rgba(192,24,26,.3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.cm-label{font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;font-weight:700;margin-bottom:.3rem}
+.cm-value{font-size:.95rem;color:var(--white);font-weight:600;line-height:1.5}
+.cm-value a{color:var(--white)}.cm-value a:hover{color:var(--gold)}
+.hours-row{display:flex;justify-content:space-between;padding:.7rem 0;border-bottom:1px solid var(--border);font-size:.85rem}
+.hours-row:last-child{border-bottom:none}
+.hours-day{color:var(--dim)}.hours-time{color:var(--white);font-weight:600}
+.hours-time.closed{color:var(--muted)}
+.map-placeholder{background:linear-gradient(135deg,var(--navy2),var(--navy3));border:1px solid var(--border);border-radius:10px;height:320px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;text-align:center;padding:2rem}
+.faq-item{border-bottom:1px solid var(--border);padding:1.2rem 0}
+.faq-q{font-family:'Montserrat',sans-serif;font-size:.95rem;font-weight:700;color:var(--white);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q:hover{color:var(--gold)}
+.faq-a{font-size:.84rem;color:var(--muted);line-height:1.75;margin-top:.8rem;display:none}
+.faq-a.open{display:block}
+.faq-icon{color:var(--red);font-size:1.1rem;flex-shrink:0;transition:transform .3s}
+.faq-icon.open{transform:rotate(45deg)}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="nav-brand"><div class="nav-brand-name"><span>TYRE</span> PLAZA</div><div class="nav-brand-sub">Mwanza · Tanzania</div></div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Nyumbani</a></li><li><a href="catalog.html">Bidhaa</a></li>
+    <li><a href="gallery.html">Picha</a></li><li><a href="about.html">Kuhusu</a></li>
+    <li><a href="../blog/index.html">Blog</a></li><li><a href="contact.html">Wasiliana</a></li>
+    <li><a href="../admin/index.html" class="nav-cta">⚙ Admin</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="../index.html">Nyumbani</a><span class="breadcrumb-sep">›</span><span>Wasiliana</span></div>
+  <h1 class="page-hero-title">Wasiliana <span class="accent">Natusu</span></h1>
+  <p class="page-hero-desc">Tuko tayari kukusaidia kwa WhatsApp, simu, au tembelea duka letu Pamba Road, Mwanza. Jibu lako litakufikia haraka sana.</p>
+</div>
+
+<section class="section section-dark">
+  <div class="grid-2" style="gap:3.5rem;align-items:start">
+
+    <!-- LEFT: Contact Methods -->
+    <div>
+      <div class="section-eye">Njia za Kuwasiliana</div>
+      <h2 class="section-title" style="font-size:1.8rem">Pata <span class="accent">Jibu Haraka</span></h2>
+      <div class="divider"></div>
+
+      <div style="display:flex;flex-direction:column;gap:1rem;margin-top:2rem">
+
+        <a href="https://wa.me/255767638987" target="_blank" class="contact-method-card" style="border-color:rgba(37,211,102,.25);text-decoration:none">
+          <div class="cm-icon" style="background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.3)">💬</div>
+          <div><div class="cm-label">WhatsApp – Haraka Zaidi</div><div class="cm-value">+255 767 638 987<br><small style="color:var(--muted);font-size:.75rem">Jibu ndani ya dakika 10 – saa za kazi</small></div></div>
+        </a>
+
+        <a href="tel:+255767638987" class="contact-method-card" style="text-decoration:none">
+          <div class="cm-icon">📞</div>
+          <div><div class="cm-label">Simu – Mwanza (Makao Makuu)</div><div class="cm-value"><a href="tel:+255767638987">+255 767 638 987</a><br><a href="tel:+255785193440">+255 785 193 440</a></div></div>
+        </a>
+
+        <a href="tel:+255678700700" class="contact-method-card" style="text-decoration:none">
+          <div class="cm-icon">📞</div>
+          <div><div class="cm-label">Simu – Arusha (Tawi)</div><div class="cm-value"><a href="tel:+255678700700">+255 678 700 700</a><br><a href="tel:+255754540540">+255 754 540 540</a></div></div>
+        </a>
+
+        <a href="mailto:info@tyreplaza.co.tz" class="contact-method-card" style="text-decoration:none">
+          <div class="cm-icon">✉️</div>
+          <div><div class="cm-label">Barua Pepe</div><div class="cm-value"><a href="mailto:info@tyreplaza.co.tz">info@tyreplaza.co.tz</a></div></div>
+        </a>
+
+        <div class="contact-method-card">
+          <div class="cm-icon">📍</div>
+          <div><div class="cm-label">Anwani – Mwanza</div><div class="cm-value">Pamba Road, Sahara, Mwanza<br>P.O. Box 10097, Mwanza</div></div>
+        </div>
+
+        <div class="contact-method-card">
+          <div class="cm-icon">📍</div>
+          <div><div class="cm-label">Anwani – Arusha</div><div class="cm-value">Arusha Bypass, Arusha, Tanzania</div></div>
+        </div>
+      </div>
+
+      <!-- HOURS -->
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:10px;padding:1.8rem;margin-top:2rem">
+        <h3 style="font-family:'Montserrat',sans-serif;font-size:.85rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem">🕐 Saa za Kazi</h3>
+        <div class="hours-row"><span class="hours-day">Jumatatu – Ijumaa</span><span class="hours-time">7:30am – 6:30pm</span></div>
+        <div class="hours-row"><span class="hours-day">Jumamosi</span><span class="hours-time">7:30am – 5:00pm</span></div>
+        <div class="hours-row"><span class="hours-day">Jumapili</span><span class="hours-time">9:00am – 2:00pm</span></div>
+        <div class="hours-row"><span class="hours-day">Sikukuu za Taifa</span><span class="hours-time closed">Imefungwa</span></div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Form + Map -->
+    <div>
+      <div style="background:var(--navy2);border:1px solid var(--border);border-radius:12px;padding:2.2rem">
+        <h3 style="font-family:'Montserrat',sans-serif;font-size:1.1rem;text-transform:uppercase;color:var(--white);margin-bottom:.4rem">📤 Tuma Ujumbe</h3>
+        <p style="font-size:.8rem;color:var(--muted);margin-bottom:1.5rem">Jaza fomu hii – tutakujibu kwa WhatsApp au simu.</p>
+
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Jina Lako *</label><input class="form-control" id="c-name" placeholder="Jina kamili"/></div>
+          <div class="form-group"><label class="form-label">Simu / WhatsApp *</label><input class="form-control" id="c-phone" placeholder="+255 7XX XXX XXX"/></div>
+        </div>
+        <div class="form-group"><label class="form-label">Barua Pepe (hiari)</label><input class="form-control" id="c-email" type="email" placeholder="barua@email.com"/></div>
+        <div class="form-group">
+          <label class="form-label">Sababu ya Kuwasiliana</label>
+          <select class="form-control" id="c-reason">
+            <option value="">-- Chagua --</option>
+            <option>Ulizia Bei ya Tairi</option><option>Ulizia Bei ya Betri</option>
+            <option>Ulizia Bei ya Rims</option><option>Ombi la Fleet Supply</option>
+            <option>Ombi la Quotation (RFQ)</option><option>Tatizo / Complaint</option>
+            <option>Nyingine</option>
+          </select>
+        </div>
+        <div class="form-group"><label class="form-label">Ujumbe Wako *</label><textarea class="form-control" id="c-msg" placeholder="Eleza unachohitaji – aina ya gari, size ya tairi, idadi, n.k."></textarea></div>
+        <button onclick="submitContact()" class="btn btn-red btn-full btn-lg" style="margin-top:.5rem">💬 Tuma kwa WhatsApp →</button>
+        <p style="font-size:.72rem;color:var(--muted);text-align:center;margin-top:.8rem">Ujumbe wako utatumwa WhatsApp. Tutakujibu haraka sana.</p>
+      </div>
+
+      <!-- MAP -->
+      <div class="map-placeholder mt-3">
+        <div style="font-size:3rem">📍</div>
+        <h3 style="font-size:1.1rem;color:var(--white)">Tyre Plaza – Pamba Road, Mwanza</h3>
+        <p style="font-size:.82rem;color:var(--muted)">Pamba Road, Sahara, Mwanza, Tanzania<br>P.O. Box 10097</p>
+        <a href="https://maps.google.com/?q=Pamba+Road+Mwanza+Tanzania" target="_blank" class="btn btn-red btn-sm">🗺️ Fungua Google Maps →</a>
+        <a href="https://maps.google.com/?q=Arusha+Bypass+Arusha+Tanzania" target="_blank" class="btn btn-outline btn-sm">🗺️ Arusha Branch →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-navy2">
+  <div class="section-head center">
+    <div class="section-eye">Maswali ya Kawaida</div>
+    <h2 class="section-title">FAQ – <span class="accent">Maswali</span> Yanayoulizwa</h2>
+    <div class="divider"></div>
+  </div>
+  <div style="max-width:760px;margin:2rem auto 0">
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Je, mnauza tairi za malori (truck tyres)?<span class="faq-icon">+</span></div><div class="faq-a">Ndio! Tunauza tairi za malori nzito za brand kama Blackhawk HS918, Dynablack, Royalblack, GT Radial na zaidi. Sizes za kawaida kama 315/80R22.5, 11.00R20, 10.00R20, 295/80R22.5 zipo stokini sasa hivi.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Bei zenu ni gani? Mnaweza kutuma pricelist?<span class="faq-icon">+</span></div><div class="faq-a">Bei zinabadilika kulingana na aina, brand na bei ya soko. Tuma WhatsApp ukitaja size na brand unayotaka – tutakujibu na bei halisi ndani ya dakika. Piga: 0767 638 987.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Je, mnaweza kutoa tairi nje ya Mwanza?<span class="faq-icon">+</span></div><div class="faq-a">Ndio, tunaweza kupeleka bidhaa kwa bus au carrier kwenda miji mbalimbali Tanzania. Wasiliana nasi ili tuzungumze kuhusu delivery na gharama.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Je, mnauza kwa jumla (wholesale)?<span class="faq-icon">+</span></div><div class="faq-a">Ndio! Tunauza kwa rejareja na jumla. Fleet operators, spare parts dealers, na garage owners wanapata bei maalum ya wholesale. Wasiliana nasi kwa maelezo.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Betri zenu zina warranty?<span class="faq-icon">+</span></div><div class="faq-a">Ndio! Betri zetu zote zina warranty. Muda wa warranty unategemea brand na aina ya betri. Betri ikiharibika ndani ya muda wa warranty, tutaibadilisha bila malipo.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Je, mnaweza kufunga tairi (fitting) pale dukani?<span class="faq-icon">+</span></div><div class="faq-a">Tunaweza kukushauri maduka ya kufunga tairi karibu nawe Mwanza. Pia tunaweza kukupanga na fundi wa kuamini katika eneo lako.</div></div>
+    <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Ninajua size gani ya tairi kwa gari langu?<span class="faq-icon">+</span></div><div class="faq-a">Angalia kwenye ukanda wa gari lako (door jamb) au kwenye tairi yako ya sasa – size imeandikwa kama "265/65R17". Unaweza pia kutumia Vehicle Finder Tool yetu kwenye homepage ya website hii. Au tuma ujumbe WhatsApp na tutakusaidia!</div></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Tyre Plaza Ltd · <a href="../index.html" style="color:var(--muted)">Nyumbani</a></div>
+    <div class="footer-powered">Powered by <a href="#">TEUS Technology</a></div>
+  </div>
+</footer>
+<a href="https://wa.me/255767638987" class="wa-float" target="_blank">💬</a>
+<script src="../js/main.js"></script>
+<script>
+function submitContact(){
+  const n=document.getElementById('c-name').value;
+  const p=document.getElementById('c-phone').value;
+  const r=document.getElementById('c-reason').value;
+  const m=document.getElementById('c-msg').value;
+  if(!n||!p||!m){showToast('Jaza sehemu zinazohitajika!','red');return}
+  const msg=`Habari Tyre Plaza! 👋\n\n👤 Jina: ${n}\n📞 Simu: ${p}\n📋 Sababu: ${r||'Haijatajwa'}\n\n💬 Ujumbe:\n${m}\n\n(Toka: tyreplaza.co.tz/contact)`;
+  window.open(`https://wa.me/255767638987?text=${encodeURIComponent(msg)}`,'_blank');
+}
+function toggleFaq(el){
+  const a=el.nextElementSibling;
+  const ic=el.querySelector('.faq-icon');
+  a.classList.toggle('open');ic.classList.toggle('open');
+}
+</script>
+</body>
+</html>
