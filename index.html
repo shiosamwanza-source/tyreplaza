@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Tyre Plaza – Duka #1 la Matairi, Betri na Rims Mwanza Tanzania. Bidhaa asili, bei za ushindani, uzoefu wa miaka 35+."/>
+<meta name="keywords" content="matairi mwanza, tire shop mwanza, betri mwanza, rims mwanza, truck tires tanzania, car batteries tanzania, tyre plaza"/>
+<meta property="og:title" content="Tyre Plaza – Matairi, Betri & Rims | Mwanza Tanzania"/>
+<meta property="og:description" content="Duka #1 la matairi Mwanza. Bidhaa asili, bei za ushindani, uzoefu wa miaka 35+."/>
+<title>Tyre Plaza – Matairi, Betri & Rims | Mwanza Tanzania</title>
+<link rel="stylesheet" href="css/style.css"/>
+<style>
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:80px 5% 70px;position:relative;overflow:hidden;background:#030710}
+.hero-bg{position:absolute;inset:0;background:url('tyres-stack.jpg') center/cover no-repeat;opacity:.06;filter:blur(3px)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(3,7,16,.97) 0%,rgba(8,13,40,.88) 55%,rgba(13,21,64,.7) 100%)}
+.hero-content{position:relative;z-index:2;max-width:680px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:1.3rem}
+.hero-pulse{width:8px;height:8px;border-radius:50%;background:var(--red);animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+.hero-title{font-size:clamp(3.2rem,8.5vw,7rem);font-weight:900;line-height:.92;text-transform:uppercase;color:var(--white);margin-bottom:1.5rem}
+.hero-title .line1{display:block;color:var(--white)}
+.hero-title .line2{display:block;color:var(--red2);font-size:.85em}
+.hero-title .line3{display:block;font-size:.4em;font-weight:600;color:var(--silver);letter-spacing:.12em;margin-top:.6rem}
+.hero-desc{font-size:1.05rem;color:#7880A8;line-height:1.8;max-width:520px;margin-bottom:2.2rem}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem}
+.hero-stats{display:flex;gap:3rem;padding-top:2.5rem;border-top:1px solid rgba(255,255,255,.06)}
+.hstat-val{font-family:'Montserrat',sans-serif;font-size:2.8rem;font-weight:900;color:var(--white);line-height:1}
+.hstat-val em{color:var(--gold);font-style:normal}
+.hstat-lbl{font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-top:.2rem}
+/* hero stripes */
+.hero-stripes{position:absolute;bottom:0;left:0;right:0;z-index:1}
+.hs1{height:4px;background:linear-gradient(90deg,transparent,var(--blue),var(--silver),var(--red2),transparent)}
+.hs2{height:2px;margin-top:5px;background:linear-gradient(90deg,transparent,var(--red),var(--gold),transparent);opacity:.6}
+/* hero visual */
+.hero-visual{position:absolute;right:5%;top:50%;transform:translateY(-50%);width:min(440px,44vw);opacity:.9}
+
+/* TICKER */
+.ticker-wrap{overflow:hidden;background:#060B20;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.9rem 0}
+.ticker{display:flex;width:max-content;animation:tick 20s linear infinite}
+.ticker:hover{animation-play-state:paused}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tick-item{padding:0 2rem;font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:700;letter-spacing:.06em;color:var(--silver);white-space:nowrap;display:flex;align-items:center;gap:.5rem}
+.tick-sep{color:var(--red);font-size:.7rem}
+
+/* PHOTOS MOSAIC */
+.mosaic{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:220px 220px;gap:3px;border-radius:12px;overflow:hidden}
+.mosaic-item{overflow:hidden;position:relative}
+.mosaic-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s;cursor:zoom-in}
+.mosaic-item:hover img{transform:scale(1.06)}
+.mosaic-item.span2{grid-row:span 2}
+.mosaic-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.75));color:var(--white);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2rem .9rem .7rem}
+
+/* VEHICLE FINDER */
+.vf-box{background:linear-gradient(135deg,#080D28,#0D1540);border:1px solid rgba(192,24,26,.25);border-radius:12px;padding:2.5rem;position:relative;overflow:hidden}
+.vf-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--gold))}
+.vf-selects{display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:1rem;margin:1.5rem 0 1rem;align-items:end}
+@media(max-width:768px){.vf-selects{grid-template-columns:1fr 1fr}}
+
+/* PRODUCT SECTION */
+.prod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5rem}
+
+/* BRANDS GRID */
+.brands-showcase{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:2rem}
+.brand-tile{background:var(--navy2);padding:1.8rem 1rem;text-align:center;cursor:pointer;transition:background .2s;display:flex;flex-direction:column;align-items:center;gap:.4rem}
+.brand-tile:hover{background:rgba(192,24,26,.12)}
+.brand-tile .bt-name{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;color:var(--silver);letter-spacing:.04em}
+.brand-tile .bt-type{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.brand-tile .bt-icon{font-size:1.6rem}
+
+/* WHY CARDS */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem}
+.why-card{padding:2rem;background:rgba(255,255,255,.02);border-left:3px solid var(--red);border-radius:0 8px 8px 0;transition:all .2s}
+.why-card:hover{background:rgba(192,24,26,.05);transform:translateX(4px)}
+.why-icon{font-size:2.2rem;margin-bottom:.9rem}
+.why-title{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;color:var(--white);margin-bottom:.6rem}
+.why-desc{font-size:.82rem;color:var(--muted);line-height:1.7}
+
+/* TESTI */
+.testi-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:2rem}
+.testi-stars{color:var(--gold);margin-bottom:.8rem;font-size:.95rem}
+.testi-text{font-size:.86rem;color:var(--dim);line-height:1.75;font-style:italic;margin-bottom:1.3rem}
+.testi-auth{display:flex;gap:.8rem;align-items:center}
+.testi-av{width:42px;height:42px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:900;color:var(--white);flex-shrink:0}
+.testi-name{font-weight:700;font-size:.85rem;color:var(--white)}
+.testi-role{font-size:.72rem;color:var(--muted)}
+
+/* LOC CARDS */
+.loc-card{background:var(--navy2);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.loc-header{padding:1.8rem 2rem 1.4rem;border-bottom:1px solid var(--border);position:relative}
+.loc-header::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--blue),var(--silver),var(--red))}
+.loc-city{font-family:'Montserrat',sans-serif;font-size:1.7rem;font-weight:900;text-transform:uppercase;color:var(--white);margin-top:.5rem}
+.loc-city em{color:var(--red2);font-style:normal}
+.loc-body{padding:1.4rem 2rem;display:flex;flex-direction:column;gap:.85rem}
+.loc-row{display:flex;gap:.8rem;align-items:flex-start;font-size:.86rem;color:var(--dim)}
+.loc-ic{font-size:1rem;flex-shrink:0;margin-top:.1rem}
+.loc-row a{color:var(--dim)}.loc-row a:hover{color:var(--gold)}
+.loc-foot{padding:1.2rem 2rem;background:rgba(0,0,0,.2)}
+
+/* CTA STRIP */
+.cta-strip{background:linear-gradient(135deg,#180508,#200A0A);border:1px solid rgba(192,24,26,.3);border-radius:12px;padding:3.5rem;text-align:center;position:relative;overflow:hidden}
+.cta-strip::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(192,24,26,.18) 0%,transparent 68%)}
+.cta-strip-title{font-size:clamp(1.8rem,3.5vw,3rem);text-transform:uppercase;position:relative;z-index:1}
+.cta-strip p{font-size:.95rem;color:var(--dim);max-width:480px;margin:.8rem auto 2rem;position:relative;z-index:1;line-height:1.7}
+.cta-strip .btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;position:relative;z-index:1}
+
+/* BLOG PREVIEW */
+.blog-card{background:var(--card);border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:all .25s}
+.blog-card:hover{border-color:rgba(192,24,26,.4);transform:translateY(-4px)}
+.blog-img{height:160px;background:linear-gradient(135deg,var(--navy2),var(--navy3));display:flex;align-items:center;justify-content:center;font-size:3.5rem;flex-shrink:0}
+.blog-body{padding:1.4rem}
+.blog-cat{font-size:.67rem;color:var(--gold);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.5rem}
+.blog-title{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;color:var(--white);line-height:1.3;margin-bottom:.7rem}
+.blog-excerpt{font-size:.8rem;color:var(--muted);line-height:1.65;margin-bottom:1rem}
+.blog-meta{font-size:.7rem;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav">
+  <div class="nav-brand">
+    <div class="nav-brand-name"><span>TYRE</span> PLAZA</div>
+    <div class="nav-brand-sub">Mwanza · Arusha · Tanzania</div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="index.html">Nyumbani</a></li>
+    <li><a href="pages/catalog.html">Bidhaa</a></li>
+    <li><a href="pages/gallery.html">Picha</a></li>
+    <li><a href="pages/about.html">Kuhusu</a></li>
+    <li><a href="blog/index.html">Blog</a></li>
+    <li><a href="pages/contact.html">Wasiliana</a></li>
+    <li><a href="admin/index.html" class="nav-cta">⚙ Admin</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <!-- SVG Tyre Visual -->
+  <div class="hero-visual" aria-hidden="true">
+    <svg viewBox="0 0 440 440" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="220" cy="220" r="208" stroke="rgba(255,255,255,0.04)" stroke-width="2"/>
+      <circle cx="220" cy="220" r="185" fill="#060B22" stroke="#141B48" stroke-width="7"/>
+      <circle cx="220" cy="220" r="178" stroke="rgba(192,24,26,0.2)" stroke-width="2" stroke-dasharray="18 7"/>
+      <!-- Tread blocks -->
+      <g stroke="rgba(255,255,255,0.1)" stroke-width="5" stroke-linecap="round">
+        <line x1="220" y1="37" x2="220" y2="75"/><line x1="220" y1="365" x2="220" y2="403"/>
+        <line x1="37" y1="220" x2="75" y2="220"/><line x1="365" y1="220" x2="403" y2="220"/>
+        <line x1="93" y1="93" x2="120" y2="120"/><line x1="320" y1="320" x2="347" y2="347"/>
+        <line x1="347" y1="93" x2="320" y2="120"/><line x1="120" y1="320" x2="93" y2="347"/>
+        <line x1="220" y1="37" x2="205" y2="74"/><line x1="220" y1="403" x2="235" y2="365"/>
+        <line x1="37" y1="220" x2="74" y2="205"/><line x1="365" y1="235" x2="403" y2="220"/>
+      </g>
+      <!-- Rim -->
+      <circle cx="220" cy="220" r="105" fill="#0D1340" stroke="#1A2255" stroke-width="7"/>
+      <circle cx="220" cy="220" r="38" fill="#080D28" stroke="rgba(192,24,26,0.7)" stroke-width="3.5"/>
+      <!-- Spokes -->
+      <g stroke="#1E2A5C" stroke-width="9" stroke-linecap="round">
+        <line x1="220" y1="220" x2="220" y2="118"/><line x1="220" y1="220" x2="220" y2="322"/>
+        <line x1="220" y1="220" x2="118" y2="220"/><line x1="220" y1="220" x2="322" y2="220"/>
+        <line x1="220" y1="220" x2="148" y2="148"/><line x1="220" y1="220" x2="292" y2="292"/>
+        <line x1="220" y1="220" x2="292" y2="148"/><line x1="220" y1="220" x2="148" y2="292"/>
+      </g>
+      <!-- Accent arc -->
+      <path d="M 105 105 A 162 162 0 0 1 220 60" stroke="rgba(245,168,0,0.35)" stroke-width="14" stroke-linecap="round"/>
+      <path d="M 335 105 A 162 162 0 0 1 380 220" stroke="rgba(192,24,26,0.25)" stroke-width="10" stroke-linecap="round"/>
+      <!-- Outer glow -->
+      <circle cx="220" cy="220" r="207" stroke="rgba(192,24,26,0.08)" stroke-width="3"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <div class="hero-pulse"></div>
+      Imara kwa Miaka 35+ · Mwanza, Tanzania
+    </div>
+    <h1 class="hero-title">
+      <span class="line1">Ubora</span>
+      <span class="line2">Unaobeba</span>
+      <span class="line3">Safari Zako · Matairi · Betri · Rims</span>
+    </h1>
+    <p class="hero-desc">Bidhaa asili za matairi, betri na rims kwa magari ya aina zote. Blackhawk, Dunlop, Goodyear, BF Goodrich na zaidi — bei za ushindani, huduma ya kitaalamu.</p>
+    <div class="hero-btns">
+      <a href="pages/catalog.html" class="btn btn-red btn-lg">🛞 Tazama Katalogi</a>
+      <button onclick="waEnquiry('Ombi la Bei Jumla')" class="btn btn-gold btn-lg">💬 Ulizia Bei</button>
+      <a href="tel:+255767638987" class="btn btn-outline btn-lg">📞 Piga Simu</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hstat-val"><span data-target="35" data-suffix="+">0+</span></div><div class="hstat-lbl">Miaka ya Uzoefu</div></div>
+      <div><div class="hstat-val"><span data-target="9" data-suffix="+">0+</span></div><div class="hstat-lbl">Brand za Tairi</div></div>
+      <div><div class="hstat-val"><span data-target="1000" data-suffix="+">0+</span></div><div class="hstat-lbl">Tairi Stokini</div></div>
+      <div><div class="hstat-val"><span data-target="2">0</span></div><div class="hstat-lbl">Matawi</div></div>
+    </div>
+  </div>
+  <div class="hero-stripes"><div class="hs1"></div><div class="hs2"></div></div>
+</section>
+
+<!-- BRANDS TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <div class="tick-item">⚫ BLACKHAWK <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🟡 SOLACHEI <span class="tick-sep">✦</span></div>
+    <div class="tick-item">⭕ DUNLOP <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🔵 BF GOODRICH <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🟡 GOODYEAR <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🔴 GT RADIAL <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🟢 EVERGREEN <span class="tick-sep">✦</span></div>
+    <div class="tick-item">⚫ DYNABLACK <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🩷 ROYALBLACK <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🔋 OMERON BETRI <span class="tick-sep">✦</span></div>
+    <div class="tick-item">⚫ BLACKHAWK <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🟡 SOLACHEI <span class="tick-sep">✦</span></div>
+    <div class="tick-item">⭕ DUNLOP <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🔵 BF GOODRICH <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🟡 GOODYEAR <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🔴 GT RADIAL <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🟢 EVERGREEN <span class="tick-sep">✦</span></div>
+    <div class="tick-item">⚫ DYNABLACK <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🩷 ROYALBLACK <span class="tick-sep">✦</span></div>
+    <div class="tick-item">🔋 OMERON BETRI <span class="tick-sep">✦</span></div>
+  </div>
+</div>
+
+<!-- REAL SHOP PHOTOS -->
+<section class="section section-dark">
+  <div class="section-head">
+    <div class="section-eye">Picha za Kweli za Duka</div>
+    <h2 class="section-title">Duka Letu — <span class="accent">Picha Halisi</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="mosaic fade-up">
+    <div class="mosaic-item span2">
+      <img src="shop-front.jpg" alt="Tyre Plaza Mwanza duka" data-lb data-src="shop-front.jpg" data-cap="Tyre Plaza – Pamba Road, Mwanza. Duka letu la kweli.">
+      <div class="mosaic-cap">📍 Tyre Plaza – Pamba Road, Mwanza</div>
+    </div>
+    <div class="mosaic-item">
+      <img src="tyres-stack.jpg" alt="Tairi za malori" data-lb data-src="tyres-stack.jpg" data-cap="Stock ya tairi za malori na mabasi – sizes mbalimbali">
+      <div class="mosaic-cap">🚛 Tairi za Malori</div>
+    </div>
+    <div class="mosaic-item">
+      <img src="batteries-stock.jpg" alt="Betri za gari" data-lb data-src="batteries-stock.jpg" data-cap="Betri za gari – Omeron na brand nyingine – stock kubwa">
+      <div class="mosaic-cap">⚡ Stock ya Betri</div>
+    </div>
+    <div class="mosaic-item">
+      <img src="blackhawk-tyres.jpg" alt="Blackhawk tairi" data-lb data-src="blackhawk-tyres.jpg" data-cap="Blackhawk HS918 – tairi za truck – zinapatikana sasa">
+      <div class="mosaic-cap">⚫ Blackhawk & KA</div>
+    </div>
+    <div class="mosaic-item">
+      <img src="tyres-outdoor.jpg" alt="Tairi nje ya duka" data-lb data-src="tyres-outdoor.jpg" data-cap="Display ya tairi nje ya duka – Royalblack, Dynablack na zaidi">
+      <div class="mosaic-cap">🩷 Royalblack · Dynablack</div>
+    </div>
+  </div>
+  <div class="text-center mt-4">
+    <a href="pages/gallery.html" class="btn btn-outline">📸 Picha Zote za Duka →</a>
+  </div>
+</section>
+
+<!-- VEHICLE FINDER -->
+<section class="section section-navy2">
+  <div class="section-head">
+    <div class="section-eye">Zana ya Kutafuta Tairi</div>
+    <h2 class="section-title">Pata Tairi <span class="accent">Sahihi</span> kwa Gari Lako</h2>
+    <div class="divider"></div>
+    <p class="section-desc">Chagua aina ya gari lako na tutakuonyesha ukubwa sahihi wa tairi unaohitajika.</p>
+  </div>
+  <div class="vf-box fade-up">
+    <h3 style="font-size:1.1rem;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.3rem;">🔍 Vehicle Finder Tool</h3>
+    <p style="font-size:.82rem;color:var(--muted);margin-bottom:1rem;">Chagua gari lako ili kupata ukubwa sahihi wa tairi</p>
+    <div class="vf-selects">
+      <div class="form-group" style="margin:0">
+        <label class="form-label">Chagua Chapa</label>
+        <select id="vf-make" class="form-control"><option value="">-- Chagua Chapa --</option></select>
+      </div>
+      <div class="form-group" style="margin:0">
+        <label class="form-label">Chagua Model</label>
+        <select id="vf-model" class="form-control"><option value="">-- Chagua Model --</option></select>
+      </div>
+      <div class="form-group" style="margin:0">
+        <label class="form-label">Chagua Mwaka</label>
+        <select id="vf-year" class="form-control"><option value="">-- Chagua Mwaka --</option></select>
+      </div>
+      <button onclick="findTyres()" class="btn btn-red" style="align-self:end;">🔍 Tafuta</button>
+    </div>
+    <div id="vf-results" style="margin-top:.5rem"></div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="section section-dark">
+  <div class="section-head flex-between flex-wrap gap-2">
+    <div>
+      <div class="section-eye">Bidhaa Zetu</div>
+      <h2 class="section-title">Katalogi ya <span class="accent">Bidhaa</span></h2>
+      <div class="divider"></div>
+    </div>
+    <a href="pages/catalog.html" class="btn btn-outline" style="align-self:flex-end">Bidhaa Zote →</a>
+  </div>
+
+  <!-- Filter tabs -->
+  <div class="tag-filter">
+    <button class="tag-btn active" data-cat="all">Zote</button>
+    <button class="tag-btn" data-cat="truck">🚛 Tairi – Malori</button>
+    <button class="tag-btn" data-cat="passenger">🚗 Tairi – Magari</button>
+    <button class="tag-btn" data-cat="suv">🛻 SUV / 4x4</button>
+    <button class="tag-btn" data-cat="battery">⚡ Betri</button>
+    <button class="tag-btn" data-cat="rims">🔩 Rims</button>
+  </div>
+
+  <div class="prod-grid">
+    <!-- TRUCK -->
+    <div class="prod-card fade-up" data-filter="truck">
+      <div class="prod-img">
+        <img src="tyres-stack.jpg" alt="Blackhawk truck tyre" data-lb data-src="tyres-stack.jpg" data-cap="Blackhawk HS918 – 315/80R22.5">
+        <div class="prod-img-overlay"></div>
+        <div class="prod-badges"><span class="badge badge-green">In Stock</span><span class="badge badge-red">Best Seller</span></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Blackhawk</div>
+        <div class="prod-name">HS918 Drive Tyre</div>
+        <div class="prod-size">📏 315/80R22.5 · 295/80R22.5</div>
+        <div class="prod-specs">
+          <span class="prod-spec-tag">🌍 China</span>
+          <span class="prod-spec-tag">✅ 1yr Warranty</span>
+          <span class="prod-spec-tag">🚛 Truck</span>
+        </div>
+        <div class="prod-avail avail-in"><div class="avail-dot"></div>Inapatikana Sasa</div>
+        <div class="prod-actions">
+          <button onclick="waEnquiry('Blackhawk HS918','315/80R22.5','Blackhawk')" class="btn btn-red btn-sm" style="flex:1">💬 Bei</button>
+          <button onclick="rfqCart.add('HS918 Drive','315/80R22.5','Blackhawk')" class="btn btn-outline btn-sm">📋 RFQ</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRUCK 2 -->
+    <div class="prod-card fade-up" data-filter="truck">
+      <div class="prod-img">
+        <img src="tyres-outdoor.jpg" alt="Dynablack truck tyre" data-lb data-src="tyres-outdoor.jpg" data-cap="Dynablack – Heavy Duty Truck Tyre">
+        <div class="prod-img-overlay"></div>
+        <div class="prod-badges"><span class="badge badge-green">In Stock</span></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Dynablack</div>
+        <div class="prod-name">Heavy Duty Drive</div>
+        <div class="prod-size">📏 11.00R20 · 10.00R20 · 9.00R20</div>
+        <div class="prod-specs">
+          <span class="prod-spec-tag">🌍 China</span>
+          <span class="prod-spec-tag">✅ 1yr Warranty</span>
+          <span class="prod-spec-tag">🚛 Truck/Bus</span>
+        </div>
+        <div class="prod-avail avail-in"><div class="avail-dot"></div>Inapatikana Sasa</div>
+        <div class="prod-actions">
+          <button onclick="waEnquiry('Dynablack Heavy Duty','11.00R20','Dynablack')" class="btn btn-red btn-sm" style="flex:1">💬 Bei</button>
+          <button onclick="rfqCart.add('Heavy Duty Drive','11.00R20','Dynablack')" class="btn btn-outline btn-sm">📋 RFQ</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PASSENGER -->
+    <div class="prod-card fade-up" data-filter="passenger">
+      <div class="prod-img">
+        <img src="blackhawk-tyres.jpg" alt="Royalblack passenger" data-lb data-src="blackhawk-tyres.jpg" data-cap="Royalblack – Tairi za Magari ya Binafsi">
+        <div class="prod-img-overlay"></div>
+        <div class="prod-badges"><span class="badge badge-green">In Stock</span></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Royalblack</div>
+        <div class="prod-name">Passenger Series</div>
+        <div class="prod-size">📏 185/65R15 · 195/65R15 · 205/55R16</div>
+        <div class="prod-specs">
+          <span class="prod-spec-tag">🌍 China</span>
+          <span class="prod-spec-tag">✅ Warranty</span>
+          <span class="prod-spec-tag">🚗 Passenger</span>
+        </div>
+        <div class="prod-avail avail-in"><div class="avail-dot"></div>Inapatikana Sasa</div>
+        <div class="prod-actions">
+          <button onclick="waEnquiry('Royalblack Passenger','195/65R15','Royalblack')" class="btn btn-red btn-sm" style="flex:1">💬 Bei</button>
+          <button onclick="rfqCart.add('Passenger Series','195/65R15','Royalblack')" class="btn btn-outline btn-sm">📋 RFQ</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUV -->
+    <div class="prod-card fade-up" data-filter="suv">
+      <div class="prod-img">
+        <img src="tyres-display.jpg" alt="BF Goodrich SUV tyre" data-lb data-src="tyres-display.jpg" data-cap="BF Goodrich All Terrain – SUV na 4x4">
+        <div class="prod-img-overlay"></div>
+        <div class="prod-badges"><span class="badge badge-gold">Popular</span></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">BF Goodrich</div>
+        <div class="prod-name">All Terrain T/A KO2</div>
+        <div class="prod-size">📏 265/65R17 · 285/60R18 · 255/70R16</div>
+        <div class="prod-specs">
+          <span class="prod-spec-tag">🇺🇸 USA Brand</span>
+          <span class="prod-spec-tag">✅ 2yr Warranty</span>
+          <span class="prod-spec-tag">🛻 SUV/4x4</span>
+        </div>
+        <div class="prod-avail avail-low"><div class="avail-dot"></div>Stock Chache</div>
+        <div class="prod-actions">
+          <button onclick="waEnquiry('BF Goodrich All Terrain KO2','265/65R17','BF Goodrich')" class="btn btn-red btn-sm" style="flex:1">💬 Bei</button>
+          <button onclick="rfqCart.add('All Terrain KO2','265/65R17','BF Goodrich')" class="btn btn-outline btn-sm">📋 RFQ</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BATTERY -->
+    <div class="prod-card fade-up" data-filter="battery">
+      <div class="prod-img" style="background:linear-gradient(135deg,#0A1030,#05080F)">
+        <img src="batteries-stock.jpg" alt="Betri ya gari" data-lb data-src="batteries-stock.jpg" data-cap="Omeron – Betri za Magari na Malori">
+        <div class="prod-img-overlay"></div>
+        <div class="prod-badges"><span class="badge badge-green">In Stock</span></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Omeron & Mixed Brands</div>
+        <div class="prod-name">Car & Truck Batteries</div>
+        <div class="prod-size">📏 45Ah · 60Ah · 75Ah · 100Ah · 200Ah</div>
+        <div class="prod-specs">
+          <span class="prod-spec-tag">⚡ Maintenance Free</span>
+          <span class="prod-spec-tag">✅ Guaranteed</span>
+          <span class="prod-spec-tag">🔧 Fitted Free</span>
+        </div>
+        <div class="prod-avail avail-in"><div class="avail-dot"></div>Stock Kubwa</div>
+        <div class="prod-actions">
+          <button onclick="waEnquiry('Betri ya Gari','60Ah','Omeron')" class="btn btn-red btn-sm" style="flex:1">💬 Bei</button>
+          <button onclick="rfqCart.add('Car Battery','60Ah','Omeron')" class="btn btn-outline btn-sm">📋 RFQ</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIMS -->
+    <div class="prod-card fade-up" data-filter="rims">
+      <div class="prod-img" style="background:linear-gradient(135deg,#0D1540,#05080F);display:flex;align-items:center;justify-content:center;font-size:5rem">
+        🔩
+        <div class="prod-img-overlay"></div>
+        <div class="prod-badges"><span class="badge badge-blue">Available</span></div>
+      </div>
+      <div class="prod-body">
+        <div class="prod-brand">Various Brands</div>
+        <div class="prod-name">Alloy & Steel Rims</div>
+        <div class="prod-size">📏 14" · 15" · 16" · 17" · 18" · 20" · 22.5"</div>
+        <div class="prod-specs">
+          <span class="prod-spec-tag">🔩 Alloy & Steel</span>
+          <span class="prod-spec-tag">✅ PCD Checked</span>
+          <span class="prod-spec-tag">🚗 All Vehicles</span>
+        </div>
+        <div class="prod-avail avail-in"><div class="avail-dot"></div>Inapatikana</div>
+        <div class="prod-actions">
+          <button onclick="waEnquiry('Rims / Magurudumu','17 inch','Alloy')" class="btn btn-red btn-sm" style="flex:1">💬 Bei</button>
+          <button onclick="rfqCart.add('Alloy Rims','17 inch','Various')" class="btn btn-outline btn-sm">📋 RFQ</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-5">
+    <a href="pages/catalog.html" class="btn btn-gold btn-lg">📋 Ona Bidhaa Zote →</a>
+  </div>
+</section>
+
+<!-- BRANDS SHOWCASE -->
+<section class="section section-navy2">
+  <div class="section-head center">
+    <div class="section-eye">Brand Tunazouza</div>
+    <h2 class="section-title">Brand <span class="accent">Zinazoaminiwa</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="brands-showcase">
+    <div class="brand-tile fade-up" onclick="waEnquiry('Blackhawk Tyres')"><div class="bt-icon">⚫</div><div class="bt-name">Blackhawk</div><div class="bt-type">Truck · HS918</div></div>
+    <div class="brand-tile fade-up" onclick="waEnquiry('Dynablack Tyres')"><div class="bt-icon">🔴</div><div class="bt-name">Dynablack</div><div class="bt-type">Heavy Duty</div></div>
+    <div class="brand-tile fade-up" onclick="waEnquiry('Royalblack Tyres')"><div class="bt-icon">🩷</div><div class="bt-name">Royalblack</div><div class="bt-type">Truck · SUV</div></div>
+    <div class="brand-tile fade-up" onclick="waEnquiry('Dunlop Tyres')"><div class="bt-icon">⭕</div><div class="bt-name">Dunlop</div><div class="bt-type">Passenger · SUV</div></div>
+    <div class="brand-tile fade-up" onclick="waEnquiry('BF Goodrich Tyres')"><div class="bt-icon">🔵</div><div class="bt-name">BF Goodrich</div><div class="bt-type">4x4 · All Terrain</div></div>
+    <div class="brand-tile fade-up" onclick="waEnquiry('Goodyear Tyres')"><div class="bt-icon">🟡</div><div class="bt-name">Goodyear</div><div class="bt-type">Passenger · Truck</div></div>
+    <div class="brand-tile fade-up" onclick="waEnquiry('GT Radial Tyres')"><div class="bt-icon">🔴</div><div class="bt-name">GT Radial</div><div class="bt-type">Passenger · Van</div></div>
+    <div class="brand-tile fade-up" onclick="waEnquiry('Solachei Tyres')"><div class="bt-icon">🟡</div><div class="bt-name">Solachei</div><div class="bt-type">Budget · Value</div></div>
+    <div class="brand-tile fade-up" onclick="waEnquiry('Evergreen Tyres')"><div class="bt-icon">🟢</div><div class="bt-name">Evergreen</div><div class="bt-type">Eco · Passenger</div></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section section-dark">
+  <div class="section-head center">
+    <div class="section-eye">Kwa Nini Sisi</div>
+    <h2 class="section-title">Sababu za <span class="accent">Kutuchagua</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="why-grid mt-4">
+    <div class="why-card fade-up"><div class="why-icon">🏆</div><div class="why-title">Miaka 35+ ya Uaminifu</div><p class="why-desc">Tulianzishwa miaka 35+ iliyopita. Tyre Plaza ni nembo ya uaminifu na ubora Mwanza na Tanzania nzima.</p></div>
+    <div class="why-card fade-up"><div class="why-icon">✅</div><div class="why-title">Bidhaa 100% Asili</div><p class="why-desc">Tairi zetu zote ni mpya, original na na warranty. Hatuuzi fake wala bidhaa za pili.</p></div>
+    <div class="why-card fade-up"><div class="why-icon">📦</div><div class="why-title">Stock ya 1,000+ Tairi</div><p class="why-desc">Stock kubwa ya tairi za malori, magari, SUV na pikipiki. Size yako ipo leo — bila kuagiza.</p></div>
+    <div class="why-card fade-up"><div class="why-icon">💰</div><div class="why-title">Bei za Ushindani</div><p class="why-desc">Bei nzuri zaidi Mwanza. Fleet na bulk discounts zinapatikana kwa makampuni na wasambazaji.</p></div>
+    <div class="why-card fade-up"><div class="why-icon">👨‍🔧</div><div class="why-title">Wataalam wa Tairi</div><p class="why-desc">Timu yetu ina uzoefu wa miaka mingi. Tutakusaidia kuchagua tairi sahihi kwa gari lako.</p></div>
+    <div class="why-card fade-up"><div class="why-icon">🚛</div><div class="why-title">Fleet Supply Ready</div><p class="why-desc">Tunasambaza kwa makampuni ya usafirishaji, migodi, na serikali. Supply contracts zinapatikana.</p></div>
+    <div class="why-card fade-up"><div class="why-icon">💬</div><div class="why-title">WhatsApp Haraka</div><p class="why-desc">Wasiliana nasi kwa WhatsApp na upate jibu ndani ya dakika. Ombi lako linachukuliwa haraka.</p></div>
+    <div class="why-card fade-up"><div class="why-icon">🗺️</div><div class="why-title">Matawi 2 Tanzania</div><p class="why-desc">Duka la Mwanza (Pamba Road) na tawi la Arusha. Karibu na mteja wako popote alipo.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section section-navy2">
+  <div class="section-head center">
+    <div class="section-eye">Maoni ya Wateja</div>
+    <h2 class="section-title">Wateja <span class="accent">Wanasema</span> Nini?</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="grid-3 mt-4">
+    <div class="testi-card fade-up">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Nimekuwa nikinunua tairi hapa kwa miaka 10. Wanatoa ubora wa kweli na bei nzuri. Wafanyakazi wao wanajua kila kitu kuhusu tairi — wanisaidia kila wakati."</p>
+      <div class="testi-auth"><div class="testi-av">JM</div><div><div class="testi-name">John Mwita</div><div class="testi-role">Mwenye Malori · Mwanza</div></div></div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Best tyre shop in Mwanza! They had my 315/80R22.5 truck tyres in stock immediately. No waiting, very professional service and fair prices. Highly recommended!"</p>
+      <div class="testi-auth"><div class="testi-av">SK</div><div><div class="testi-name">Said Kasim</div><div class="testi-role">Transport Contractor · Dar es Salaam</div></div></div>
+    </div>
+    <div class="testi-card fade-up">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Betri zangu zote za gari ninazinunua Tyre Plaza. Bei nzuri, guaranteed na wanainstall haraka sana. WhatsApp yao inafanya kazi vizuri — wanajibu haraka!"</p>
+      <div class="testi-auth"><div class="testi-av">FH</div><div><div class="testi-name">Fatuma Hassan</div><div class="testi-role">Duka Owner · Mwanza</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOG PREVIEW -->
+<section class="section section-dark">
+  <div class="section-head flex-between flex-wrap gap-2">
+    <div>
+      <div class="section-eye">Elimu &amp; Makala</div>
+      <h2 class="section-title">Blog ya <span class="accent">Maarifa</span></h2>
+      <div class="divider"></div>
+    </div>
+    <a href="blog/index.html" class="btn btn-outline" style="align-self:flex-end">Makala Zote →</a>
+  </div>
+  <div class="grid-3 mt-4">
+    <div class="blog-card fade-up">
+      <div class="blog-img">🛞</div>
+      <div class="blog-body">
+        <div class="blog-cat">Elimu ya Tairi</div>
+        <div class="blog-title">Jinsi ya Kusoma Ukubwa wa Tairi: 265/65R17 Inamaanisha Nini?</div>
+        <p class="blog-excerpt">Kuelewa nambari zilizopo kwenye ukanda wa tairi ni muhimu ili kuchagua tairi sahihi kwa gari lako...</p>
+        <div class="blog-meta">📅 Juni 2025 · ⏱️ Dakika 4</div>
+        <a href="blog/kusoma-ukubwa-tairi.html" class="btn btn-outline-red btn-sm mt-2">Soma Zaidi →</a>
+      </div>
+    </div>
+    <div class="blog-card fade-up">
+      <div class="blog-img">⚡</div>
+      <div class="blog-body">
+        <div class="blog-cat">Betri za Gari</div>
+        <div class="blog-title">Dalili 7 za Betri ya Gari Lako Kuharibika – Usikawile</div>
+        <p class="blog-excerpt">Betri mbaya inaweza kukuzuia safari muhimu. Jua dalili mapema ili uepuke shida barabarani...</p>
+        <div class="blog-meta">📅 Mei 2025 · ⏱️ Dakika 5</div>
+        <a href="blog/dalili-betri-kuharibika.html" class="btn btn-outline-red btn-sm mt-2">Soma Zaidi →</a>
+      </div>
+    </div>
+    <div class="blog-card fade-up">
+      <div class="blog-img">🔩</div>
+      <div class="blog-body">
+        <div class="blog-cat">Rims &amp; Magurudumu</div>
+        <div class="blog-title">Faida za Alloy Rims Dhidi ya Steel Rims – Upi Bora?</div>
+        <p class="blog-excerpt">Wengi wanauliza: alloy rims au steel rims? Tunalinganisha faida, hasara na bei ili ukuwe uamuzi sahihi...</p>
+        <div class="blog-meta">📅 Aprili 2025 · ⏱️ Dakika 6</div>
+        <a href="blog/alloy-vs-steel-rims.html" class="btn btn-outline-red btn-sm mt-2">Soma Zaidi →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATIONS -->
+<section class="section section-navy2">
+  <div class="section-head center">
+    <div class="section-eye">Matawi Yetu</div>
+    <h2 class="section-title">Tukutane <span class="accent">Hapa</span></h2>
+    <div class="divider"></div>
+  </div>
+  <div class="grid-2 mt-4">
+    <div class="loc-card fade-left">
+      <div class="loc-header">
+        <span class="badge badge-gold">MAKAO MAKUU</span>
+        <div class="loc-city"><em>Mwanza</em> Branch</div>
+      </div>
+      <div class="loc-body">
+        <div class="loc-row"><span class="loc-ic">📍</span><span>Pamba Road, Sahara, Mwanza<br><small>P.O. Box 10097</small></span></div>
+        <div class="loc-row"><span class="loc-ic">📞</span><div><a href="tel:+255767638987">+255 767 638 987</a><br><a href="tel:+255785193440">+255 785 193 440</a></div></div>
+        <div class="loc-row"><span class="loc-ic">✉️</span><a href="mailto:info@tyreplaza.co.tz">info@tyreplaza.co.tz</a></div>
+        <div class="loc-row"><span class="loc-ic">🕐</span><span>Jumatatu–Jumamosi: 7:30am–6:30pm<br>Jumapili: 9:00am–2:00pm</span></div>
+      </div>
+      <div class="loc-foot" style="display:flex;gap:.8rem">
+        <a href="tel:+255767638987" class="btn btn-red btn-sm" style="flex:1;justify-content:center">📞 Piga Simu</a>
+        <a href="https://wa.me/255767638987" target="_blank" class="btn btn-gold btn-sm" style="flex:1;justify-content:center">💬 WhatsApp</a>
+      </div>
+    </div>
+    <div class="loc-card fade-right">
+      <div class="loc-header" style="border-top-color:var(--blue)">
+        <span class="badge badge-blue">TAWI</span>
+        <div class="loc-city"><em>Arusha</em> Branch</div>
+      </div>
+      <div class="loc-body">
+        <div class="loc-row"><span class="loc-ic">📍</span><span>Arusha Bypass, Arusha, Tanzania</span></div>
+        <div class="loc-row"><span class="loc-ic">📞</span><div><a href="tel:+255678700700">+255 678 700 700</a><br><a href="tel:+255754540540">+255 754 540 540</a></div></div>
+        <div class="loc-row"><span class="loc-ic">✉️</span><a href="mailto:info@tyreplaza.co.tz">info@tyreplaza.co.tz</a></div>
+        <div class="loc-row"><span class="loc-ic">🕐</span><span>Jumatatu–Jumamosi: 7:30am–6:30pm<br>Jumapili: 9:00am–2:00pm</span></div>
+      </div>
+      <div class="loc-foot" style="display:flex;gap:.8rem">
+        <a href="tel:+255678700700" class="btn btn-outline btn-sm" style="flex:1;justify-content:center">📞 Piga Simu</a>
+        <a href="https://wa.me/255678700700" target="_blank" class="btn btn-outline btn-sm" style="flex:1;justify-content:center">💬 WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="section section-dark">
+  <div class="cta-strip fade-up">
+    <h2 class="cta-strip-title">Unahitaji Tairi <span class="accent">Leo?</span></h2>
+    <p>Piga simu, tuma WhatsApp, au tembelea duka letu Pamba Road, Mwanza. Tuko wazi siku 7 kwa wiki na tutakusaidia mara moja kupata tairi, betri au rims zinazofaa.</p>
+    <div class="btns">
+      <a href="tel:+255767638987" class="btn btn-red btn-lg">📞 0767 638 987</a>
+      <a href="https://wa.me/255767638987" target="_blank" class="btn btn-gold btn-lg">💬 WhatsApp Sasa</a>
+      <a href="pages/catalog.html" class="btn btn-outline btn-lg">🛞 Tazama Katalogi</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name"><span>TYRE</span> PLAZA</div>
+      <div class="footer-brand-sub">Matairi · Betri · Rims · Tanzania</div>
+      <p class="footer-brand-desc">Mwanza's most trusted tyre, battery and rim supplier for 35+ years. Serving individual drivers, transport companies, mining firms and government fleets across Tanzania.</p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem">
+        <span class="badge badge-gold">GS1 Tanzania</span>
+        <span class="badge badge-blue">ISO Certified</span>
+        <span class="badge badge-red">DANIDA Partner</span>
+        <span class="badge badge-green">S55 Member</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Kurasa</h4>
+      <ul>
+        <li><a href="index.html">🏠 Nyumbani</a></li>
+        <li><a href="pages/catalog.html">🛞 Katalogi</a></li>
+        <li><a href="pages/gallery.html">📸 Picha</a></li>
+        <li><a href="pages/about.html">ℹ️ Kuhusu Sisi</a></li>
+        <li><a href="blog/index.html">📝 Blog</a></li>
+        <li><a href="pages/contact.html">📞 Wasiliana</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Bidhaa</h4>
+      <ul>
+        <li><a href="pages/catalog.html">🚛 Tairi – Malori</a></li>
+        <li><a href="pages/catalog.html">🚗 Tairi – Magari</a></li>
+        <li><a href="pages/catalog.html">🛻 Tairi – SUV/4x4</a></li>
+        <li><a href="pages/catalog.html">⚡ Betri za Gari</a></li>
+        <li><a href="pages/catalog.html">🔩 Rims &amp; Alloys</a></li>
+        <li><a href="pages/contact.html">📋 Fleet Supply</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Wasiliana</h4>
+      <div class="footer-contact-item"><span class="footer-contact-icon">📞</span><div class="footer-contact-text"><a href="tel:+255767638987">+255 767 638 987</a><br><a href="tel:+255785193440">+255 785 193 440</a></div></div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">✉️</span><div class="footer-contact-text"><a href="mailto:info@tyreplaza.co.tz">info@tyreplaza.co.tz</a></div></div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">📍</span><div class="footer-contact-text">Pamba Road, Sahara<br>Mwanza, Tanzania</div></div>
+      <div class="footer-contact-item"><span class="footer-contact-icon">📍</span><div class="footer-contact-text">Arusha Bypass<br>Arusha, Tanzania</div></div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Tyre Plaza Ltd · Haki zote zimehifadhiwa · Built with <span>♥</span> Tanzania</div>
+    <div class="footer-powered">Powered by <a href="#">TEUS Technology</a></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/255767638987" class="wa-float" target="_blank" title="Chat on WhatsApp">💬</a>
+<div id="lightbox"><button class="lb-close">✕</button><img class="lb-img" src="" alt=""/><div class="lb-caption"></div></div>
+<div id="compare-panel" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9980;background:rgba(6,10,32,.97);border-top:2px solid var(--gold);padding:1rem 5%"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
