@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Gallery ya Tyre Plaza – Picha za duka, bidhaa na matangazo. Mwanza Tanzania."/>
+<title>Gallery – Tyre Plaza Mwanza</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<style>
+/* HERO SLIDESHOW */
+.slideshow{position:relative;width:100%;height:520px;overflow:hidden;border-radius:12px;margin-bottom:3rem}
+.slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;display:flex;align-items:center;justify-content:center}
+.slide.active{opacity:1}
+.slide img{width:100%;height:100%;object-fit:cover}
+.slide-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,.5) 0%,transparent 60%)}
+.slide-caption{position:absolute;bottom:2rem;left:2rem;z-index:2}
+.slide-caption h3{font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:900;color:var(--white);text-transform:uppercase;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.slide-caption p{font-size:.82rem;color:var(--silver);margin-top:.3rem}
+.slide-dots{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);display:flex;gap:.5rem;z-index:3}
+.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .3s}
+.dot.active{background:var(--gold);width:24px;border-radius:4px}
+.slide-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(0,0,0,.4);border:none;color:#fff;font-size:1.5rem;width:44px;height:44px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s}
+.slide-nav:hover{background:rgba(192,24,26,.7)}
+.slide-prev{left:1rem}
+.slide-next{right:1rem}
+
+/* PROMO GRID */
+.promo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem}
+.promo-item{position:relative;border-radius:10px;overflow:hidden;cursor:zoom-in;aspect-ratio:1/1;background:var(--navy2)}
+.promo-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.promo-item:hover img{transform:scale(1.05)}
+.promo-item .p-overlay{position:absolute;inset:0;background:linear-gradient(transparent 55%,rgba(0,0,0,.8));opacity:0;transition:opacity .3s}
+.promo-item:hover .p-overlay{opacity:1}
+.promo-item .p-cap{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1rem .8rem;color:#fff;font-size:.75rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transform:translateY(8px);opacity:0;transition:all .3s}
+.promo-item:hover .p-cap{transform:translateY(0);opacity:1}
+.promo-item .p-badge{position:absolute;top:.7rem;left:.7rem}
+
+/* DUKA GRID */
+.duka-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:240px 240px;gap:4px;border-radius:12px;overflow:hidden}
+.duka-item{overflow:hidden;position:relative;cursor:zoom-in}
+.duka-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.duka-item:hover img{transform:scale(1.06)}
+.duka-item.span2{grid-row:span 2}
+.duka-cap{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2rem .9rem .7rem}
+
+/* SECTION DIVIDER */
+.sec-divider{display:flex;align-items:center;gap:1rem;margin:3rem 0 2rem}
+.sec-divider h3{font-family:'Montserrat',sans-serif;font-size:1rem;font-weight:800;text-transform:uppercase;color:var(--white);white-space:nowrap}
+.sec-divider::before,.sec-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.sec-divider .icon{font-size:1.4rem;flex-shrink:0}
+
+@media(max-width:768px){
+  .slideshow{height:300px}
+  .duka-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .duka-item.span2{grid-row:span 1}
+  .slide-caption h3{font-size:1rem}
+}
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <div class="nav-brand"><div class="nav-brand-name"><span>TYRE</span> PLAZA</div><div class="nav-brand-sub">Mwanza · Tanzania</div></div>
+  <ul class="nav-links">
+    <li><a href="../index.html">Nyumbani</a></li>
+    <li><a href="catalog.html">Bidhaa</a></li>
+    <li><a href="gallery.html">Picha</a></li>
+    <li><a href="compare.html">Linganisha</a></li>
+    <li><a href="about.html">Kuhusu</a></li>
+    <li><a href="../blog/index.html">Blog</a></li>
+    <li><a href="contact.html">Wasiliana</a></li>
+    <li><a href="../admin/index.html" class="nav-cta">⚙ Admin</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="../index.html">Nyumbani</a><span class="breadcrumb-sep">›</span><span>Gallery ya Picha</span></div>
+  <h1 class="page-hero-title">Gallery ya <span class="accent">Tyre Plaza</span></h1>
+  <p class="page-hero-desc">Picha zetu za bidhaa, matangazo na duka letu halisi – Mwanza, Tanzania. Picha 20+ za kweli.</p>
+  <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap">
+    <a href="catalog.html" class="btn btn-red">🛞 Tazama Bidhaa</a>
+    <a href="https://wa.me/255719231796" target="_blank" class="btn btn-gold">💬 Agiza WhatsApp</a>
+  </div>
+</div>
+
+<section class="section section-dark">
+
+  <!-- ══ SLIDESHOW ya Matangazo ══ -->
+  <div class="section-head">
+    <div class="section-eye">Matangazo ya Tyre Plaza</div>
+    <h2 class="section-title">Picha za <span class="accent">Matangazo</span> Yetu</h2>
+    <div class="divider"></div>
+  </div>
+
+  <div class="slideshow fade-up" id="mainSlideshow">
+    <!-- Slide 1 -->
+    <div class="slide active">
+      <img src="../promo-blue-gold.jpg" alt="Tyre Plaza – Tairi za ubora"/>
+      <div class="slide-overlay"></div>
+      <div class="slide-caption">
+        <h3>🛞 Tairi za Ubora wa Juu</h3>
+        <p>Passenger & Alloy Rims – Mwanza, Sahara Street</p>
+      </div>
+    </div>
+    <!-- Slide 2 -->
+    <div class="slide">
+      <img src="../promo-suv-dark.jpg" alt="Tyre Plaza – Toyota Land Cruiser"/>
+      <div class="slide-overlay"></div>
+      <div class="slide-caption">
+        <h3>🚙 Matairi ya Ubora kwa Magari Bora</h3>
+        <p>Toyota Land Cruiser & SUV – Tairi za Premium</p>
+      </div>
+    </div>
+    <!-- Slide 3 -->
+    <div class="slide">
+      <img src="../promo-fire-tyre.jpg" alt="Tyre Plaza – Tairi za nguvu"/>
+      <div class="slide-overlay"></div>
+      <div class="slide-caption">
+        <h3>⚡ Nguvu – Kasi – Usalama</h3>
+        <p>Tairi za hali ya juu – Call/WhatsApp: 0719231796</p>
+      </div>
+    </div>
+    <!-- Slide 4 -->
+    <div class="slide">
+      <img src="../promo-tundra-orange.jpg" alt="Tyre Plaza – Toyota Tundra"/>
+      <div class="slide-overlay"></div>
+      <div class="slide-caption">
+        <h3>🛻 Toyota Tundra – Tairi za 4x4</h3>
+        <p>Matairi ya ubora kwa magari bora Tanzania</p>
+      </div>
+    </div>
+    <!-- Slide 5 -->
+    <div class="slide">
+      <img src="../promo-vanguard-blue.jpg" alt="Tyre Plaza – Vanguard"/>
+      <div class="slide-overlay"></div>
+      <div class="slide-caption">
+        <h3>🚗 Matairi kwa Toyota Vanguard Mpya</h3>
+        <p>Tairi sahihi kwa kila gari – Agiza leo!</p>
+      </div>
+    </div>
+    <!-- Slide 6 -->
+    <div class="slide">
+      <img src="../promo-highlander-dark.jpg" alt="Tyre Plaza – Highlander"/>
+      <div class="slide-overlay"></div>
+      <div class="slide-caption">
+        <h3>🌙 Matairi ya Ubora kwa Magari Bora</h3>
+        <p>Tyre Plaza – Pamba Road, Mwanza</p>
+      </div>
+    </div>
+    <!-- Slide 7 -->
+    <div class="slide">
+      <img src="../promo-hilux-orange.jpg" alt="Tyre Plaza – Hilux"/>
+      <div class="slide-overlay"></div>
+      <div class="slide-caption">
+        <h3>🔶 Toyota Hilux – Tairi za 4x4</h3>
+        <p>Nguvu na uvumilivu kwa barabara za Tanzania</p>
+      </div>
+    </div>
+    <!-- Slide 8 -->
+    <div class="slide">
+      <img src="../promo-black-gold.jpg" alt="Tyre Plaza – Black Gold"/>
+      <div class="slide-overlay"></div>
+      <div class="slide-caption">
+        <h3>⭐ Huduma ya Muda Mrefu</h3>
+        <p>Tyre Plaza – Wauzaji wa Matairi ya Gari Aina Zote</p>
+      </div>
+    </div>
+
+    <!-- Nav buttons -->
+    <button class="slide-nav slide-prev" onclick="changeSlide(-1)">‹</button>
+    <button class="slide-nav slide-next" onclick="changeSlide(1)">›</button>
+
+    <!-- Dots -->
+    <div class="slide-dots" id="slideDots"></div>
+  </div>
+
+  <!-- ══ FILTER TABS ══ -->
+  <div class="tag-filter">
+    <button class="tag-btn active" data-cat="all">🖼️ Zote</button>
+    <button class="tag-btn" data-cat="promo">📣 Matangazo</button>
+    <button class="tag-btn" data-cat="cars">🚗 Magari</button>
+    <button class="tag-btn" data-cat="tyres">🛞 Tairi</button>
+    <button class="tag-btn" data-cat="shop">🏪 Duka</button>
+  </div>
+
+  <!-- ══ PROMO PICHA ZOTE ══ -->
+  <div class="sec-divider"><span class="icon">📣</span><h3>Matangazo Yetu – Picha Zote</h3></div>
+
+  <div class="promo-grid">
+
+    <div class="promo-item fade-up" data-filter="promo">
+      <img src="../promo-blue-gold.jpg" alt="Tyre Plaza blue gold promo" data-lb data-src="../promo-blue-gold.jpg" data-cap="Tyre Plaza – Tairi za Ubora – Blue & Gold Edition">
+      <div class="p-overlay"></div>
+      <div class="p-badge"><span class="badge badge-blue">Tairi</span></div>
+      <div class="p-cap">🛞 Tairi za Ubora – Blue Edition</div>
+    </div>
+
+    <div class="promo-item fade-up" data-filter="cars">
+      <img src="../promo-suv-dark.jpg" alt="Toyota Land Cruiser promo" data-lb data-src="../promo-suv-dark.jpg" data-cap="Tyre Plaza – Matairi ya Ubora kwa Magari Bora – Toyota Land Cruiser">
+      <div class="p-overlay"></div>
+      <div class="p-badge"><span class="badge badge-gold">SUV</span></div>
+      <div class="p-cap">🚙 Matairi kwa Toyota Land Cruiser</div>
+    </div>
+
+    <div class="promo-item fade-up" data-filter="promo tyres">
+      <img src="../promo-fire-tyre.jpg" alt="Tyre Plaza fire promo" data-lb data-src="../promo-fire-tyre.jpg" data-cap="Tyre Plaza – Nguvu, Kasi, Usalama – Tairi za Hali ya Juu">
+      <div class="p-overlay"></div>
+      <div class="p-badge"><span class="badge badge-red">🔥 Hot</span></div>
+      <div class="p-cap">⚡ Nguvu · Kasi · Usalama</div>
+    </div>
+
+    <div class="promo-item fade-up" data-filter="cars">
+      <img src="../promo-tundra-orange.jpg" alt="Toyota Tundra promo" data-lb data-src="../promo-tundra-orange.jpg" data-cap="Tyre Plaza – Toyota Tundra – Matairi ya Ubora kwa 4x4">
+      <div class="p-overlay"></div>
+      <div class="p-badge"><span class="badge badge-orange">4x4</span></div>
+      <div class="p-cap">🛻 Toyota Tundra – Tairi za 4x4</div>
+    </div>
+
+    <div class="promo-item fade-up" data-filter="promo">
+      <img src="../promo-blue-gold2.jpg" alt="Tyre Plaza blue gold 2" data-lb data-src="../promo-blue-gold2.jpg" data-cap="Tyre Plaza – Tairi na Rims za Alloy – Mwanza">
+      <div class="p-overlay"></div>
+      <div class="p-badge"><span class="badge badge-blue">Rims</span></div>
+      <div class="p-cap">🔩 Tairi & Alloy Rims</div>
+    </div>
+
+    <div class="promo-item fade-up" data-filter="cars">
+      <img src="../promo-hilux-orange.jpg" alt="Toyota Hilux promo" data-lb data-src="../promo-hilux-orange.jpg" data-cap="Tyre Plaza – Toyota Hilux – Tairi za Nguvu">
+      <div class="p-overlay"></div>
+      <div class="p-badge"><span class="badge badge-orange">Pickup</span></div>
+      <div class="p-cap">🔶 Toyota Hilux – Tairi za 4x4</div>
+    </div>
+
+    <div class="promo-item fade-up" data-filter="cars">
+      <img src="../promo-vanguard-blue.jpg" alt="Toyota Vanguard promo" data-lb data-src="../promo-vanguard-blue.jpg" data-cap="Tyre Plaza – Matairi ya Ubora kwa Toyota Vanguard Mpya">
+      <div class="p-overlay"></div>
+      <div class="p-badge"><span class="badge badge-gold">Vanguard</span></div>
+      <div class="p-cap">🚗 Matairi kwa Toyota Vanguard</div>
+    </div>
+
+    <div class="promo-item fade-up" data-filter="cars">
+      <img src="../promo-highlander-dark.jpg" alt="Toyota Highlander promo" data-lb data-src="../promo-highlander-dark.jpg" data-cap="Tyre Plaza – Matairi ya Ubora kwa Magari Bora – Toyota Highlander">
+      <div class="p-overlay"></div>
+      <div class="p-badge"><span class="badge badge-red">Premium</span></div>
+      <div class="p-cap">🌙 Toyota Highlander – Tairi Premium</div>
+    </div>
+
+    <div class="promo-item fade-up" data-filter="promo">
+      <img src="../promo-black-gold.jpg" alt="Tyre Plaza black gold" data-lb data-src="../promo-black-gold.jpg" data-cap="Tyre Plaza – Black & Gold Edition – Tairi za Aina Zote">
+      <div class="p-overlay"></div>
+      <div class="p-badge"><span class="badge badge-gold">⭐ Classic</span></div>
+      <div class="p-cap">⭐ Black & Gold Edition</div>
+    </div>
+
+    <div class="promo-item fade-up" data-filter="promo">
+      <img src="../promo-white-purple.jpg" alt="Tyre Plaza white purple" data-lb data-src="../promo-white-purple.jpg" data-cap="Tyre Plaza – White Edition – Huduma kwa Muda Mrefu">
+      <div class="p-overlay"></div>
+      <div class="p-badge"><span class="badge badge-blue">Modern</span></div>
+      <div class="p-cap">🤍 White & Purple Edition</div>
+    </div>
+
+    <div class="promo-item fade-up" data-filter="tyres">
+      <img src="../tyres-stack.jpg" alt="Tairi za malori" data-lb data-src="../tyres-stack.jpg" data-cap="Stock ya Tairi za Malori – Blackhawk, Dynablack na zaidi">
+      <div class="p-overlay"></div>
+      <div class="p-badge"><span class="badge badge-red">Stock</span></div>
+      <div class="p-cap">🚛 Tairi za Malori – Stock Kubwa</div>
+    </div>
+
+    <div class="promo-item fade-up" data-filter="tyres">
+      <img src="../blackhawk-tyres.jpg" alt="Blackhawk tyres" data-lb data-src="../blackhawk-tyres.jpg" data-cap="Blackhawk HS918 – Tairi za Malori Nzito">
+      <div class="p-overlay"></div>
+      <div class="p-badge"><span class="badge badge-green">In Stock</span></div>
+      <div class="p-cap">⚫ Blackhawk HS918 – Heavy Duty</div>
+    </div>
+
+  </div>
+
+  <!-- ══ DUKA HALISI ══ -->
+  <div class="sec-divider"><span class="icon">🏪</span><h3>Duka Letu Halisi – Pamba Road, Mwanza</h3></div>
+
+  <div class="duka-grid fade-up">
+    <div class="duka-item span2">
+      <img src="../shop-front.jpg" alt="Tyre Plaza duka" data-lb data-src="../shop-front.jpg" data-cap="Tyre Plaza – Duka Kuu, Pamba Road, Mwanza">
+      <div class="duka-cap">📍 Duka Kuu – Pamba Road, Mwanza</div>
+    </div>
+    <div class="duka-item">
+      <img src="../batteries-stock.jpg" alt="Betri stock" data-lb data-src="../batteries-stock.jpg" data-cap="Stock ya Betri – Ghala letu">
+      <div class="duka-cap">⚡ Stock ya Betri</div>
+    </div>
+    <div class="duka-item">
+      <img src="../tyres-outdoor.jpg" alt="Tairi nje" data-lb data-src="../tyres-outdoor.jpg" data-cap="Display ya Tairi Nje – Royalblack & Dynablack">
+      <div class="duka-cap">🩷 Royalblack · Dynablack</div>
+    </div>
+    <div class="duka-item">
+      <img src="../tyres-display.jpg" alt="Tairi display" data-lb data-src="../tyres-display.jpg" data-cap="Display ya Tairi Mbalimbali">
+      <div class="duka-cap">📦 Aina Mbalimbali za Tairi</div>
+    </div>
+    <div class="duka-item">
+      <img src="../shop-front2.jpg" alt="Duka mtazamo 2" data-lb data-src="../shop-front2.jpg" data-cap="Tyre Plaza – Mtazamo mwingine wa Duka">
+      <div class="duka-cap">🏪 Duka Letu – Stock Nje</div>
+    </div>
+  </div>
+
+  <!-- ══ CTA ══ -->
+  <div style="text-align:center;margin-top:3rem;padding:2.5rem;background:linear-gradient(135deg,#180508,#200A0A);border:1px solid rgba(192,24,26,.3);border-radius:12px">
+    <h3 style="font-family:'Montserrat',sans-serif;font-size:1.5rem;text-transform:uppercase;color:var(--white);margin-bottom:.5rem">
+      Unapenda <span style="color:var(--gold)">Bidhaa Unayoona?</span>
+    </h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.5rem;max-width:450px;margin-left:auto;margin-right:auto">
+      Piga simu au tuma WhatsApp sasa hivi. Tutakusaidia kupata tairi, betri au rims unazohitaji kwa bei nzuri.
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="https://wa.me/255719231796" target="_blank" class="btn btn-gold btn-lg">💬 WhatsApp: 0719 231 796</a>
+      <a href="tel:+255719231796" class="btn btn-red btn-lg">📞 Piga Simu Sasa</a>
+      <a href="catalog.html" class="btn btn-outline btn-lg">🛞 Tazama Katalogi</a>
+    </div>
+  </div>
+
+</section>
+
+<footer class="site-footer">
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Tyre Plaza Ltd · <a href="../index.html" style="color:var(--muted)">Nyumbani</a> · <a href="contact.html" style="color:var(--muted)">Wasiliana</a></div>
+    <div class="footer-powered">Powered by <a href="#">TEUS Technology</a></div>
+  </div>
+</footer>
+
+<a href="https://wa.me/255719231796" class="wa-float" target="_blank" title="WhatsApp Tyre Plaza">💬</a>
+<div id="lightbox"><button class="lb-close">✕</button><img class="lb-img" src="" alt=""/><div class="lb-caption"></div></div>
+
+<script src="../js/main.js"></script>
+<script>
+// ── SLIDESHOW ──
+let currentSlide=0;
+const slides=document.querySelectorAll('.slide');
+const dotsContainer=document.getElementById('slideDots');
+
+// Build dots
+slides.forEach((_,i)=>{
+  const d=document.createElement('div');
+  d.className='dot'+(i===0?' active':'');
+  d.onclick=()=>goToSlide(i);
+  dotsContainer.appendChild(d);
+});
+
+function goToSlide(n){
+  slides[currentSlide].classList.remove('active');
+  document.querySelectorAll('.dot')[currentSlide].classList.remove('active');
+  currentSlide=(n+slides.length)%slides.length;
+  slides[currentSlide].classList.add('active');
+  document.querySelectorAll('.dot')[currentSlide].classList.add('active');
+}
+function changeSlide(dir){goToSlide(currentSlide+dir)}
+
+// Auto slide every 4 seconds
+let autoSlide=setInterval(()=>changeSlide(1),4000);
+document.getElementById('mainSlideshow').addEventListener('mouseenter',()=>clearInterval(autoSlide));
+document.getElementById('mainSlideshow').addEventListener('mouseleave',()=>{autoSlide=setInterval(()=>changeSlide(1),4000)});
+
+// Touch swipe
+let touchX=0;
+document.getElementById('mainSlideshow').addEventListener('touchstart',e=>touchX=e.touches[0].clientX);
+document.getElementById('mainSlideshow').addEventListener('touchend',e=>{
+  const diff=touchX-e.changedTouches[0].clientX;
+  if(Math.abs(diff)>50) changeSlide(diff>0?1:-1);
+});
+</script>
+</body>
+</html>
